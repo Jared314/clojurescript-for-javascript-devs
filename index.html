@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>An introduction to ClojureScript for Javascript developers</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="styles/monokai_sublime.css">
+    <link rel="stylesheet" href="slides.css">
+</head>
+<body>
+    <article>
+<!--
+http://4.bp.blogspot.com/-c_iLsyzXl1M/UHZvR59Y3UI/AAAAAAAACDs/h7qAMrBEGPc/s1600/Michael-Hauges-Structure.jpg
+
+Act 1: 
+    Stage 1 (Setup): ClojureScript exists
+    Turning Point 1 (Opportunity): You can use it in web apps
+    Stage 2 (New Situation): You have to integrate with existing JS
+    Turning Point 2 (Change of Plans): Manage state
+Act 2: 
+    Stage 3 (Progress): State management difference from JS and Clojure
+    Turning Point 3 (Point of No Return): ClojureScript app basic architecture
+    Stage 4 (Complications): Node.js and Tooling
+    Turning Point 4 (Major Setback): Putting it all together
+Act 3: 
+    Stage 5 (Final Push): Libraries, and Frameworks
+    Turning Point 5 (Climax): Dracorum
+    Stage 6 (Aftermath): Community and Purpose
+End: 
+-->
+
+<!-- Other presentations:
+Clojure: the JFDI language
+https://docs.google.com/presentation/d/15-7qFy6URdE7Owi2LitkQI_OHBu1AFWPUwHxgBc-O4E/edit#slide=id.g1793dde48_1213
+
+https://github.com/cemerick/clojure-type-selection-flowchart
+
+Intro to Clojure (February 2014 Houston Functional Programming Meetup)
+http://www.youtube.com/watch?v=yL_N7kP3jtA
+
+https://github.com/magomimmo/modern-cljs
+http://clojurescriptkoans.com/
+http://ckirkendall.github.io/enfocus-site/index.html
+http://sgrove.github.io/omchaya/docs/presentation.html#/
+https://github.com/stuartsierra/component
+
+http://holmsand.github.io/reagent/news/binary-clock.html
+http://pmbauer.github.io/2014/01/27/hoplon-binary-clock/
+-->
+        <section>
+            <div class="content">
+                <div class="unbrokenline"></div>
+                <h1>An Introduction to <strong>ClojureScript</strong></h1>
+                <h3>for Javascript developers</h3>
+                <div class="unbrokenline"></div>
+                <div class="me"></div>
+                <div><a target="_blank" href="http://blog.lobberecht.com/">http://blog.Lobberecht.com</a><br/><a target="_blank" href="https://twitter.com/jared314">@Jared314</a><br/><a target="_blank" href="http://github.com/Jared314">Jared@Lobberecht.com</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="content">
+                <div class="byline">
+                    <div class="classy">I am:</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="content">
+                <div class="unbrokenline"></div>
+                <h1>Knowledge</h1>
+                <h4>is the difference between choice and choices.</h4>
+                <div class="byline">
+                    <div class="classy">Unknown Author</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="content">
+                <div class="unbrokenline"></div>
+                <h1>There will be parentheses in this presentation.</h1>
+                <div class="unbrokenline"></div>
+            </div>
+        </section>
+        
+        <section>
+            <div class="content">
+                <div class="unbrokenline"></div>
+                <h2>Basic Syntax Conversion</h2>
+                <pre style="display: inline-block;"><code class="javascript">12345
+
+"abc"
+
+[1, 2, 3]
+
+[1, 2, 3][0]
+
+{'a': 1, 'b': 2, 'c': 3}
+
+var a = 1;
+
+function(x){ return x; }
+
+function f(x, y){ return x + y; }
+
+(function(){
+  var b = 2;
+  return f(a, b);
+}());
+</code></pre>
+<pre style="display: inline-block;"><code class="clojure">12345
+
+"abc"
+
+[1 2 3]
+
+([1 2 3] 0)
+
+{"a" 1 "b" 2 "c" 3}
+
+(def a 1)
+
+(fn [x] x)
+
+(defn f [x y] (+ x y))
+
+(let [b 2]
+  (f a b))
+
+
+</code></pre>
+            <div class="unbrokenline"></div>
+            </div>
+        </section>
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Infinite Lazy FizzBuzz</div></div>
+                <h1>The first function developers learn.</h1>
+                <pre style="display: inline-block;"><code class="javascript">// Lazy.js
+function fizzbuzz(x){
+  var x3 = x % 3 == 0,
+      x5 = x % 5 == 0;
+  if(x3 &amp;&amp; x5)
+    return "fizzbuzz";
+  if(x3) return "fizz";
+  if(x5) return "buzz";
+  return x;
+}
+
+Lazy
+  .generate(function[x]{
+    return x;
+  })
+  .drop(1)
+  .map(fizzbuzz);
+
+</code></pre>
+                <pre style="display: inline-block;"><code class="clojure">(defn fizzbuzz [x]
+  (let [x3 (zero? (mod x 3))
+        x5 (zero? (mod x 5))]
+    (cond
+     (and x3 x5) "fizzbuzz"
+     x3 "fizz"
+     x5 "buzz"
+     :else x)))
+
+(map fizzbuzz
+     (drop 1 (range)))
+</code></pre>
+            <div class="unbrokenline"></div>
+            </div>
+        </section>
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Infinite Lazy FizzBuzz</div></div>
+                <h1>The first function developers learn.</h1>
+                <pre style="display: inline-block;"><code class="javascript">"use strict";
+// JS ES6
+function* range(){
+  for(let i = 0;;i++)
+    yield i;
+}
+
+function* map(f, coll){
+  for(let x of coll)
+    yield f(x);
+}
+
+function drop(n, coll){
+  for(let i = 0; i &lt; n; i++)
+    coll.next();
+  return coll;
+}
+
+function fizzbuzz(x){
+  let x3 = x % 3 == 0,
+      x5 = x % 5 == 0;
+  if(x3 &amp;&amp; x5)
+    return "fizzbuzz";
+  if(x3) return "fizz";
+  if(x5) return "buzz";
+  return x;
+}
+
+map(fizzbuzz, 
+    drop(1, range()));
+</code></pre>
+                <pre style="display: inline-block;"><code class="clojure">(defn fizzbuzz [x]
+  (let [x3 (zero? (mod x 3))
+        x5 (zero? (mod x 5))]
+    (cond
+     (and x3 x5) "fizzbuzz"
+     x3 "fizz"
+     x5 "buzz"
+     :else x)))
+
+(map fizzbuzz
+     (drop 1 (range)))
+</code></pre>
+            <div class="unbrokenline"></div>
+            </div>
+        </section>
+
+        <!-- ClojureScript syntax -->
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">ClojureScript</div></div>
+                <h1></h1>
+                <div class="unbrokenline"></div>
+            </div>
+        </section>
+
+        
+        <!-- ClojureScript datastructures -->
+
+
+
+
+
+
+        <!-- Escaping ClojureScript syntax -->
+
+        <!-- ClojureScript compiler -->
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">ClojureScript vs Clojure</div></div>
+                <h1></h1>
+                <div class="unbrokenline"></div>
+            </div>
+        </section>
+
+        <!-- Differences from Clojure -->
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">ClojureScript vs Clojure</div></div>
+                <h1></h1>
+                <div class="unbrokenline"></div>
+            </div>
+        </section>
+
+        <!-- Differences from Coffeescript -->
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">ClojureScript vs Coffeescript</div></div>
+                <h1></h1>
+                <div class="unbrokenline"></div>
+            </div>
+        </section>
+
+        <!-- ClojureScript in ClojureScript -->
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">ClojureScript in ClojureScript</div></div>
+                <h1></h1>
+                <div class="unbrokenline"></div>
+            </div>
+        </section>
+        
+        <!-- Basic ClojureScript app design -->
+        <!-- State management -->
+        <!-- Event Pipeline -->
+
+        <!-- Integration strategies -->
+        <!-- Migrate codebase with ^:export -->
+        <!-- Migrate codebase with modules -->
+
+        <!-- Available Tooling -->
+        <!-- Emacs -->
+        <!-- Vim -->
+        <!-- NightCode -->
+        <!-- Cursive Clojure -->
+        <!-- CounterClockwise -->
+        <!-- LightTable -->
+        <!-- LightTable Architecture -->
+        
+        <!-- Leiningen CljsBuild -->
+
+        <!-- Builtin REPL -->
+        <!-- Austin -->
+
+        <!-- Development Workflow -->
+
+        <!-- Available Libraries -->
+        <!-- Enfocus 2 -->
+        <!-- Core.Async -->
+        <!-- Core.Match -->
+        <!-- Core.Logic -->
+
+        <!-- Available "Frameworks" -->
+        <!-- Reagent -->
+        <!-- Hoplon -->
+        <!-- Pedestal -->
+        <!-- Pedestal Applications -->
+        <!-- Event flow -->
+        <!-- Large models -->
+        <!-- Event without models -->
+
+        <!-- Hoplon -->
+
+
+        <!-- Dracorum -->
+        <!-- Om - React.js -->
+        <!-- Storm spouts -->
+        <!-- Storm garanteed message processing -->
+        <!-- Core.Match for message selection -->
+        <!-- Core.Async -->
+        <!-- WebRTC DataChannels ? -->
+        
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Mad Libs: Greenspun's 10th Rule</div></div>
+                <h1>Any sufficiently complicated <span style="text-decoration:underline;">distributed system</span> contains an ad hoc, informally-specified, bug-ridden, slow implementation of half of <span style="text-decoration:underline;">Erlang and OTP</span>.</h1>
+                <div class="unbrokenline"></div>
+            </div>
+        </section>
+
+        <section>
+            <div class="content">
+            </div>
+        </section>
+
+<!-- This is probibly a good example of why I was drawn to Lisp after so much C and Ruby-style languages. Lisps have an infinite level of abstraction. Meta programming not only exists, but is used. Code can transform code, turning a single function into a mountain. Functions working on massive trees of data are as concise as the functions that add and subtract. And, I, as a developer, can use that power of abstraction to build very complex things with simple and concise parts. And, the only limit is only my own understanding.
+
+I built, what I consider, a bit of a Frankenstien's monster. It's part of Erlang, part lisp, and all running in a Javascript VM. Normally, when I build something like crazy, I get a feeling. And, I think everyone has this. You look at the file with a thousand lines of javascript, and you get a feeling that maybe something is wrong. Maybe you should be doing something different. But, that didn't happen. ClojureScript didn't stop me.
+
+So, the key takeaway from this is, maybe, you shouldn't use ClojureScript. Maybe it's too powerful. Maybe you should stick with Angular or Ember or Meteor, because, in those frameworks, you know when you know when are on the right path when the code is simple and concise. And, you know you are on the wrong path because the code is complex and verbose. ClojureScript made everything feel simple and concise. So, maybe you shouldn't use ClojureScript. I don't know.
+-->
+
+        <!-- Repeat Intro -->
+
+        <!-- Questions -->
+
+    </article>
+
+    <script src="bespoke.js"></script>
+    <script src="highlight.pack.js"></script>
+    <script >hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
