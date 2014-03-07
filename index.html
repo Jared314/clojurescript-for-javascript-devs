@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>An introduction to ClojureScript for Javascript developers</title>
+    <meta charset='utf-8'>
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="font.css">
     <link rel="stylesheet" href="styles/monokai_sublime.css">
@@ -30,6 +31,8 @@ End:
 -->
 
 <!-- Other presentations:
+https://github.com/oakmac/intro-to-cljs/blob/master/index.html
+
 Clojure: the JFDI language
 https://docs.google.com/presentation/d/15-7qFy6URdE7Owi2LitkQI_OHBu1AFWPUwHxgBc-O4E/edit#slide=id.g1793dde48_1213
 
@@ -55,14 +58,6 @@ http://pmbauer.github.io/2014/01/27/hoplon-binary-clock/
                 <div class="unbrokenline"></div>
                 <div class="me"></div>
                 <div><a target="_blank" href="http://blog.lobberecht.com/">http://blog.Lobberecht.com</a><br/><a target="_blank" href="https://twitter.com/jared314">@Jared314</a><br/><a target="_blank" href="http://github.com/Jared314">Jared@Lobberecht.com</a>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="content">
-                <div class="byline">
-                    <div class="classy">I am:</div>
                 </div>
             </div>
         </section>
@@ -134,6 +129,8 @@ function f(x, y){ return x + y; }
 </code></pre>
             <div class="unbrokenline"></div>
             </div>
+            <!-- For reference, here is a basic syntax conversion table. Many of the items are fairly intuitive for people with basic knowledge of Javascript. But, I thought I would add them here for direct comparison. Some things you should note are, there is no syntactic difference between indexing into an array and using the array as a function. There are dedicated functions for this, such as 
+            -->
         </section>
 
         <section>
@@ -254,24 +251,6 @@ map(fizzbuzz,
             </div>
         </section>
 
-        <!-- Differences from Clojure -->
-        <section>
-            <div class="content">
-                <div class="byline"><div class="classy">ClojureScript vs Clojure</div></div>
-                <h1></h1>
-                <div class="unbrokenline"></div>
-            </div>
-        </section>
-
-        <!-- Differences from Coffeescript -->
-        <section>
-            <div class="content">
-                <div class="byline"><div class="classy">ClojureScript vs Coffeescript</div></div>
-                <h1></h1>
-                <div class="unbrokenline"></div>
-            </div>
-        </section>
-
         <!-- ClojureScript in ClojureScript -->
         <section>
             <div class="content">
@@ -286,10 +265,13 @@ map(fizzbuzz,
         <!-- Event Pipeline -->
 
         <!-- Integration strategies -->
+        <!-- Embrase and extend types with protocols -->
         <!-- Migrate codebase with ^:export -->
         <!-- Migrate codebase with modules -->
 
         <!-- Available Tooling -->
+        <!-- Leiningen CljsBuild -->
+
         <!-- Emacs -->
         <!-- Vim -->
         <!-- NightCode -->
@@ -298,30 +280,129 @@ map(fizzbuzz,
         <!-- LightTable -->
         <!-- LightTable Architecture -->
         
-        <!-- Leiningen CljsBuild -->
-
-        <!-- Builtin REPL -->
+        <!-- Builtin bREPL -->
         <!-- Austin -->
 
         <!-- Development Workflow -->
 
         <!-- Available Libraries -->
-        <!-- Enfocus 2 -->
+        <section>
+            <div class="content">
+                <div class="unbrokenline"></div>
+                <h1>Libraries</h1>
+                <div class="unbrokenline"></div>
+            </div>
+        </section>
+
+        <!-- Enfocus -->
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Libraries</div></div>
+                <h1>Enfocus &amp; Enfocus 2</h1>
+                <div class="unbrokenline"></div>
+            </div>
+        </section>
+
+        <!-- Reagent -->
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Libraries</div></div>
+                <h1>Reagent (React.js)</h1>
+                <div class="unbrokenline"></div>
+            </div>
+        </section>
+
+        <!-- Om -->
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Libraries</div></div>
+                <h1>Om (React.js)</h1>
+
+                <div class="unbrokenline"></div>
+            </div>
+        </section>
+
         <!-- Core.Async -->
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Libraries</div></div>
+                <h1>Core.Async</h1>
+                <pre style="display: inline-block;"><code class="clojure">(Code Sample)
+</code></pre>                
+                <div class="unbrokenline"></div>
+            </div>
+            <!-- If you've seen Go Routines in Google's Go language, this will look familier. Core.Async provides a message & channel model for concurrent processes. You implement your logic inside a Go macro. At the points where it writes to, or listen's from, a channel, the execution of the go block will be suspended. Internally this is accomplished by recompiling your code into a state machine at macro expansion, similar the async and await keywords in C#.
+
+            I've written test code with hundreds of concurrently executing Go blocks with good performance. And, i've seen examples with thousands of Go blocks with good performance. (Although, in those examples, the DOM manipulations did spin up my CPU fan.)
+
+            This also addresses the callback hell problem without promises. I currently think sending messages is better than promises, but that's an opinion. -->
+        </section>
+
         <!-- Core.Match -->
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Libraries</div></div>
+                <h1>Core.Match</h1>
+                <pre style="display: inline-block;"><code class="clojure">(Code Sample)
+</code></pre>                
+<!-- 
+
+-->
+                <div class="unbrokenline"></div>
+            </div>
+        </section>
+
         <!-- Core.Logic -->
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Libraries</div></div>
+                <h1>Core.Logic</h1>
+                <div class="unbrokenline"></div>
+            </div>
+        </section>
+
+
+
 
         <!-- Available "Frameworks" -->
-        <!-- Reagent -->
+        <!-- Webfui (2011, lower performance compared to React.js)-->
         <!-- Hoplon -->
+
         <!-- Pedestal -->
         <!-- Pedestal Applications -->
         <!-- Event flow -->
         <!-- Large models -->
         <!-- Event without models -->
 
-        <!-- Hoplon -->
 
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Frameworks</div></div>
+                <h1></h1>
+                        <!-- Coils -->
+        <!-- Luminus -->
+        <!-- Many more! -->
+
+                <div class="unbrokenline"></div>
+            </div>
+            <!-- I'm leaving out many frameworks, each with their own take on slightly different take on the problem they are trying to solve. I think every developer goes through a phase of either building, or wanting to build your own framework. Just like developers go through a phase of building their own text editor or building their own programming language. 
+
+            But, while most developers want to build a framework, most of the community has a different opinion on frameworks.-->
+        </section>
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Community Opinion</div></div>
+                <h1>Many people view frameworks as generally unnecessary, and too large for their own good.</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <!-- Most Clojure and ClojureScript developers that I have encountered have prefered both building and using libraries over frameworks. And, I agree with them. When I first encountered Pedestal, I could not understand what it did or how I was suppose to use it. It was this large, almost unwieldy thing. Every feature that I found in it, could have be improved by spliting it out into a more generic library.
+
+            I think this is an artifact of the large effects a library can have in Clojure and ClojureScript. Message passing is just a library. Optional typing is just a library. Pattern matching is just a library too. In other languages, those items are language features. Frameworks just don't have the same benefit in Clojure and ClojureScript. Most of the frameworks I have followed, in the past, end up being split into libraries. -->
+        </section>
+
+
+<!-- BEST CASE SCENARIO: MAY NOT BE INCLUDED -->
 
         <!-- Dracorum -->
         <!-- Om - React.js -->
@@ -329,7 +410,7 @@ map(fizzbuzz,
         <!-- Storm garanteed message processing -->
         <!-- Core.Match for message selection -->
         <!-- Core.Async -->
-        <!-- WebRTC DataChannels ? -->
+        <!-- Future: WebRTC DataChannels -->
         
         <section>
             <div class="content">
@@ -351,9 +432,19 @@ I built, what I consider, a bit of a Frankenstien's monster. It's part of Erlang
 So, the key takeaway from this is, maybe, you shouldn't use ClojureScript. Maybe it's too powerful. Maybe you should stick with Angular or Ember or Meteor, because, in those frameworks, you know when you know when are on the right path when the code is simple and concise. And, you know you are on the wrong path because the code is complex and verbose. ClojureScript made everything feel simple and concise. So, maybe you shouldn't use ClojureScript. I don't know.
 -->
 
-        <!-- Repeat Intro -->
-
-        <!-- Questions -->
+        <!-- Repeated Intro -->
+        <section>
+            <div class="content">
+                <div class="unbrokenline"></div>
+                <h1>An Introduction to <strong>ClojureScript</strong></h1>
+                <h3>for Javascript developers</h3>
+                <div class="unbrokenline"></div>
+                <div class="me"></div>
+                <div><a target="_blank" href="http://blog.lobberecht.com/">http://blog.Lobberecht.com</a><br/><a target="_blank" href="https://twitter.com/jared314">@Jared314</a><br/><a target="_blank" href="http://github.com/Jared314">Jared@Lobberecht.com</a>
+                </div>
+            </div>
+            <!-- Again, I am Jared. And, I do take questions.-->
+        </section>        
 
     </article>
 
