@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="slides.css">
 </head>
 <body>
-    <article>
+    <article id="deck1">
 <!--
 http://4.bp.blogspot.com/-c_iLsyzXl1M/UHZvR59Y3UI/AAAAAAAACDs/h7qAMrBEGPc/s1600/Michael-Hauges-Structure.jpg
 
@@ -49,6 +49,13 @@ https://github.com/stuartsierra/component
 
 http://holmsand.github.io/reagent/news/binary-clock.html
 http://pmbauer.github.io/2014/01/27/hoplon-binary-clock/
+http://programming-enchiladas.destructuring-bind.org/rm-hull/8262502
+https://github.com/bodil/clojurescript-all-the-way-down/blob/master/src/server/server.cljs
+https://code.google.com/p/closure-library/wiki/NodeJS
+http://blog.lauripesonen.com/clojurescript-optimizations-on-node-huh/
+
+http://swannodette.github.io/2014/02/27/taking-off-the-blindfold/
+http://danielsz.github.io/2014/02/28/The-pleasantness-of-Om/
 -->
         <section>
             <div class="content">
@@ -60,6 +67,7 @@ http://pmbauer.github.io/2014/01/27/hoplon-binary-clock/
                 <div><a target="_blank" href="http://blog.lobberecht.com/">http://blog.Lobberecht.com</a><br/><a target="_blank" href="https://twitter.com/jared314">@Jared314</a><br/><a target="_blank" href="http://github.com/Jared314">Jared@Lobberecht.com</a>
                 </div>
             </div>
+            <code data-bespoke-autorun>alert(2 + 2);</code>
         </section>
 
         <section>
@@ -79,6 +87,9 @@ http://pmbauer.github.io/2014/01/27/hoplon-binary-clock/
                 <h1>There will be parentheses in this presentation.</h1>
                 <div class="unbrokenline"></div>
             </div>
+            <aside>
+            I put this warning in here, because, from my experience, that viseral reaction to moving the opening paren one step to the left is real. And, if you've spent more than a decade putting curly braces around code, there is a transition period.
+            </aside>
         </section>
         
         <section>
@@ -129,14 +140,15 @@ function f(x, y){ return x + y; }
 </code></pre>
             <div class="unbrokenline"></div>
             </div>
-            <!-- For reference, here is a basic syntax conversion table. Many of the items are fairly intuitive for people with basic knowledge of Javascript. But, I thought I would add them here for direct comparison. Some things you should note are, there is no syntactic difference between indexing into an array and using the array as a function. There are dedicated functions for this, such as 
-            -->
+            <aside>
+            For reference, here is a basic syntax conversion table. Many of the items are fairly intuitive for people with basic knowledge of Javascript. But, I thought I would add them here for direct comparison. Some things you should note are, there is no syntactic difference between indexing into an array and using the array as a function. There are dedicated functions for this, such as 
+            </aside>
         </section>
 
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Infinite Lazy FizzBuzz</div></div>
-                <h1>The first function developers learn.</h1>
+                <h1>The first function a developer learns.</h1>
                 <pre style="display: inline-block;"><code class="javascript">// Lazy.js
 function fizzbuzz(x){
   var x3 = x % 3 == 0,
@@ -170,12 +182,15 @@ Lazy
 </code></pre>
             <div class="unbrokenline"></div>
             </div>
+            <aside>
+            Fizzbuzz. Truely the workhorse of the technical interview. In this case, I used a Javascript library called Lazy.js to replicate the lazy sequences produced by the ClojureScript range, drop, and map. But, the point is the similarity of the structure. 
+            </aside>
         </section>
 
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Infinite Lazy FizzBuzz</div></div>
-                <h1>The first function developers learn.</h1>
+                <h1>The first function a developer learns.</h1>
                 <pre style="display: inline-block;"><code class="javascript">"use strict";
 // JS ES6
 function* range(){
@@ -221,69 +236,334 @@ map(fizzbuzz,
 </code></pre>
             <div class="unbrokenline"></div>
             </div>
+            <aside>
+            I also did an example replicating the features in ES6. In this case, I had to defined my own generaters to to replicate the lazy sequences. But, the structure of the logic is not that different from Javascript written in a functional style.
+            </aside>
         </section>
 
-        <!-- ClojureScript syntax -->
+
+
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">ClojureScript</div></div>
-                <h1></h1>
+                <div class="byline"><div class="classy">Architecture</div></div>
+                <h1>Single Atom Architecture</h1>
                 <div class="unbrokenline"></div>
             </div>
+            <aside>
+                
+            </aside>
         </section>
 
-        
-        <!-- ClojureScript datastructures -->
 
-
-
-
-
-
-        <!-- Escaping ClojureScript syntax -->
-
-        <!-- ClojureScript compiler -->
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">ClojureScript vs Clojure</div></div>
-                <h1></h1>
+                <div class="byline"><div class="classy">Syntax</div></div>
+                <h1>Javascript Interop</h1>
                 <div class="unbrokenline"></div>
             </div>
+            <aside>
+                
+            </aside>
         </section>
 
-        <!-- ClojureScript in ClojureScript -->
+
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">ClojureScript in ClojureScript</div></div>
-                <h1></h1>
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Common Javascript Libraries</h1>
                 <div class="unbrokenline"></div>
             </div>
+            <aside>
+                
+            </aside>
         </section>
         
-        <!-- Basic ClojureScript app design -->
-        <!-- State management -->
-        <!-- Event Pipeline -->
 
-        <!-- Integration strategies -->
-        <!-- Embrase and extend types with protocols -->
-        <!-- Migrate codebase with ^:export -->
-        <!-- Migrate codebase with modules -->
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Existing ClojureScript Libraries</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
 
-        <!-- Available Tooling -->
-        <!-- Leiningen CljsBuild -->
 
-        <!-- Emacs -->
-        <!-- Vim -->
-        <!-- NightCode -->
-        <!-- Cursive Clojure -->
-        <!-- CounterClockwise -->
-        <!-- LightTable -->
-        <!-- LightTable Architecture -->
-        
-        <!-- Builtin bREPL -->
-        <!-- Austin -->
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Building It</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
 
-        <!-- Development Workflow -->
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>ClojureScript Compiler</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Google Closure Compiler</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>ClojureScript Compiler Usage</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>lein-cljsbuild</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Leiningen Templates</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Editors</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Testing &amp; Debugging</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>lein-cljsbuild Test Runner</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>ClojureScript.Test</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>REPL</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Stack Traces</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Source Maps</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Integrating Clojure and Javascript</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>this</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>^:export metadata</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Node and Node Modules</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Protocols and Extend-Type</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Macro Expansion</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>js* Macro</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Building Bigger</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>EDN</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Objects</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
 
         <!-- Available Libraries -->
         <section>
@@ -292,34 +572,38 @@ map(fizzbuzz,
                 <h1>Libraries</h1>
                 <div class="unbrokenline"></div>
             </div>
+            <aside>
+                
+            </aside>
         </section>
 
         <!-- Enfocus -->
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Libraries</div></div>
-                <h1>Enfocus &amp; Enfocus 2</h1>
+                <h1>Enfocus, Enliven, and Kioo</h1>
                 <div class="unbrokenline"></div>
             </div>
+            <aside>
+                
+            </aside>
         </section>
 
         <!-- Reagent -->
-        <section>
-            <div class="content">
-                <div class="byline"><div class="classy">Libraries</div></div>
-                <h1>Reagent (React.js)</h1>
-                <div class="unbrokenline"></div>
-            </div>
-        </section>
-
         <!-- Om -->
+        <!-- Quiescent -->
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Libraries</div></div>
-                <h1>Om (React.js)</h1>
-
+                <h1>React.js</h1>
+Om
+Reagent
+Quiescent
                 <div class="unbrokenline"></div>
             </div>
+            <aside>
+                
+            </aside>
         </section>
 
         <!-- Core.Async -->
@@ -331,11 +615,13 @@ map(fizzbuzz,
 </code></pre>                
                 <div class="unbrokenline"></div>
             </div>
-            <!-- If you've seen Go Routines in Google's Go language, this will look familier. Core.Async provides a message & channel model for concurrent processes. You implement your logic inside a Go macro. At the points where it writes to, or listen's from, a channel, the execution of the go block will be suspended. Internally this is accomplished by recompiling your code into a state machine at macro expansion, similar the async and await keywords in C#.
+            <aside>
+            If you've seen Go Routines in Google's Go language, this will look familier. Core.Async provides a message &amp; channel model for concurrent processes. You implement your logic inside a Go macro. At the points where it writes to, or listen's from, a channel, the execution of the go block will be suspended. Internally this is accomplished by recompiling your code into a state machine at macro expansion, similar the async and await keywords in C#.
 
-            I've written test code with hundreds of concurrently executing Go blocks with good performance. And, i've seen examples with thousands of Go blocks with good performance. (Although, in those examples, the DOM manipulations did spin up my CPU fan.)
+            I've written test code with hundreds of concurrently executing Go blocks with good performance. And, i've seen examples with thousands of Go blocks with good performance. (Although, the DOM manipulations did spin up my CPU fan.)
 
-            This also addresses the callback hell problem without promises. I currently think sending messages is better than promises, but that's an opinion. -->
+            This also addresses the callback hell problem without promises or callbacks. Within a go block, your application logic can be written in a normal flow, and yet still be dealing with asynchronous events.
+            </aside>
         </section>
 
         <!-- Core.Match -->
@@ -345,11 +631,11 @@ map(fizzbuzz,
                 <h1>Core.Match</h1>
                 <pre style="display: inline-block;"><code class="clojure">(Code Sample)
 </code></pre>                
-<!-- 
-
--->
                 <div class="unbrokenline"></div>
             </div>
+            <aside>
+            Core.Match 
+            </aside>
         </section>
 
         <!-- Core.Logic -->
@@ -357,11 +643,124 @@ map(fizzbuzz,
             <div class="content">
                 <div class="byline"><div class="classy">Libraries</div></div>
                 <h1>Core.Logic</h1>
+                <pre style="display: inline-block;"><code class="clojure">
+                </code></pre>
                 <div class="unbrokenline"></div>
             </div>
+            <aside>
+            Core.Logic is another cross compatible library. This example actually solves sudoku using declaritive logic programming. I believe it's based on miniKanren.
+            </aside>
         </section>
 
 
+        <section>
+            <div class="content">
+                <div class="unbrokenline"></div>
+                <h1>Frameworks</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Frameworks</div></div>
+                <h1>Pedestal Applications (v0.2)</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Frameworks</div></div>
+                <h1>Haplon</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Frameworks</div></div>
+                <h1></h1>
+                        <!-- Coils -->
+        <!-- Luminus -->
+        <!-- Many more! -->
+
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+            I'm leaving out many other frameworks, each with their own take on slightly different take on the problem they are trying to solve. I actually think every developer goes through a phase of either building, or wanting to build your own framework. Just like developers go through a phase of building their own text editor or building their own programming language. 
+
+            But, while most developers want to build a framework, most of the community has a different opinion on frameworks.
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Frameworks</div></div>
+                <h1>Community Opinion: Frameworks are generally unnecessary, and too large for their own good.</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+            Most Clojure and ClojureScript developers that I have encountered have prefered both building and using libraries over frameworks. And, I agree with them. When I first encountered Pedestal, I could not understand what it did or how I was suppose to use it. It was this large, almost unwieldy thing. Every feature that I found in it, could have be improved by spliting it out into a more generic library.
+
+            I think this is an artifact of the large effects a library can have in Clojure and ClojureScript. Message passing is just a library. Optional typing is just a library. Pattern matching is just a library too. In other languages, those items are language features. Frameworks just don't have the same benefit in Clojure and ClojureScript. Most of the frameworks I have followed, in the past, end up being split into libraries.
+            </aside>
+        </section>
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Online Resources</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>User Groups</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy"></div></div>
+                <h1>Conferences</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <!-- Testing
+            cljsbuild contains a test runner designed to work with phantomjs and run existing javascript testing frameworks.
+            Chas Emerick has a port of the clojure.test library. It is currently a work in progress, but it does work.
+            https://github.com/cemerick/clojurescript.test
+            -->
 
 
         <!-- Available "Frameworks" -->
@@ -375,63 +774,6 @@ map(fizzbuzz,
         <!-- Event without models -->
 
 
-        <section>
-            <div class="content">
-                <div class="byline"><div class="classy">Frameworks</div></div>
-                <h1></h1>
-                        <!-- Coils -->
-        <!-- Luminus -->
-        <!-- Many more! -->
-
-                <div class="unbrokenline"></div>
-            </div>
-            <!-- I'm leaving out many frameworks, each with their own take on slightly different take on the problem they are trying to solve. I think every developer goes through a phase of either building, or wanting to build your own framework. Just like developers go through a phase of building their own text editor or building their own programming language. 
-
-            But, while most developers want to build a framework, most of the community has a different opinion on frameworks.-->
-        </section>
-
-        <section>
-            <div class="content">
-                <div class="byline"><div class="classy">Community Opinion</div></div>
-                <h1>Many people view frameworks as generally unnecessary, and too large for their own good.</h1>
-                <div class="unbrokenline"></div>
-            </div>
-            <!-- Most Clojure and ClojureScript developers that I have encountered have prefered both building and using libraries over frameworks. And, I agree with them. When I first encountered Pedestal, I could not understand what it did or how I was suppose to use it. It was this large, almost unwieldy thing. Every feature that I found in it, could have be improved by spliting it out into a more generic library.
-
-            I think this is an artifact of the large effects a library can have in Clojure and ClojureScript. Message passing is just a library. Optional typing is just a library. Pattern matching is just a library too. In other languages, those items are language features. Frameworks just don't have the same benefit in Clojure and ClojureScript. Most of the frameworks I have followed, in the past, end up being split into libraries. -->
-        </section>
-
-
-<!-- BEST CASE SCENARIO: MAY NOT BE INCLUDED -->
-
-        <!-- Dracorum -->
-        <!-- Om - React.js -->
-        <!-- Storm spouts -->
-        <!-- Storm garanteed message processing -->
-        <!-- Core.Match for message selection -->
-        <!-- Core.Async -->
-        <!-- Future: WebRTC DataChannels -->
-        
-        <section>
-            <div class="content">
-                <div class="byline"><div class="classy">Mad Libs: Greenspun's 10th Rule</div></div>
-                <h1>Any sufficiently complicated <span style="text-decoration:underline;">distributed system</span> contains an ad hoc, informally-specified, bug-ridden, slow implementation of half of <span style="text-decoration:underline;">Erlang and OTP</span>.</h1>
-                <div class="unbrokenline"></div>
-            </div>
-        </section>
-
-        <section>
-            <div class="content">
-            </div>
-        </section>
-
-<!-- This is probibly a good example of why I was drawn to Lisp after so much C and Ruby-style languages. Lisps have an infinite level of abstraction. Meta programming not only exists, but is used. Code can transform code, turning a single function into a mountain. Functions working on massive trees of data are as concise as the functions that add and subtract. And, I, as a developer, can use that power of abstraction to build very complex things with simple and concise parts. And, the only limit is only my own understanding.
-
-I built, what I consider, a bit of a Frankenstien's monster. It's part of Erlang, part lisp, and all running in a Javascript VM. Normally, when I build something like crazy, I get a feeling. And, I think everyone has this. You look at the file with a thousand lines of javascript, and you get a feeling that maybe something is wrong. Maybe you should be doing something different. But, that didn't happen. ClojureScript didn't stop me.
-
-So, the key takeaway from this is, maybe, you shouldn't use ClojureScript. Maybe it's too powerful. Maybe you should stick with Angular or Ember or Meteor, because, in those frameworks, you know when you know when are on the right path when the code is simple and concise. And, you know you are on the wrong path because the code is complex and verbose. ClojureScript made everything feel simple and concise. So, maybe you shouldn't use ClojureScript. I don't know.
--->
-
         <!-- Repeated Intro -->
         <section>
             <div class="content">
@@ -443,13 +785,32 @@ So, the key takeaway from this is, maybe, you shouldn't use ClojureScript. Maybe
                 <div><a target="_blank" href="http://blog.lobberecht.com/">http://blog.Lobberecht.com</a><br/><a target="_blank" href="https://twitter.com/jared314">@Jared314</a><br/><a target="_blank" href="http://github.com/Jared314">Jared@Lobberecht.com</a>
                 </div>
             </div>
-            <!-- Again, I am Jared. And, I do take questions.-->
+            <aside>
+            Again, I am Jared. And, I can take questions.
+            </aside>
         </section>        
 
     </article>
 
-    <script src="bespoke.js"></script>
+    <script src="bespoke.min.js"></script>
+    <script src="bespoke-keys.min.js"></script>
+    <script src="bespoke-run.min.js"></script>
     <script src="highlight.pack.js"></script>
-    <script >hljs.initHighlightingOnLoad();</script>
+    <script>
+        var deck1 = bespoke.from('article', {
+            keys: true,
+            run: true//,
+            // secondary: {
+            // // Change the selector used to find notes, in a .bespoke-slide context
+            // notes: ".show-notes",
+            // keys: {
+            //     // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent#Virtual_key_codes
+            //     // Change the key used to toggle the secondary window
+            //     toggle: 0x54, // (84) "T" key.
+            // }
+            //}
+        });
+        hljs.initHighlightingOnLoad();
+    </script>
 </body>
 </html>

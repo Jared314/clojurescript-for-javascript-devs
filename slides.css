@@ -399,3 +399,11 @@ pre > code {
 section ul {
   text-align: left;
 }
+
+section aside {
+    display: none;
+}
+
+.show-note {
+    display: block;
+}
