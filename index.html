@@ -225,7 +225,7 @@ map(fizzbuzz,
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">Architecture</div></div>
+                <div class="byline"><div class="classy">Starting</div></div>
                 <h1>Single Atom Architecture</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -237,7 +237,7 @@ map(fizzbuzz,
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">Syntax</div></div>
+                <div class="byline"><div class="classy">Starting</div></div>
                 <h1>Javascript Interop</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -249,7 +249,7 @@ map(fizzbuzz,
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Starting</div></div>
                 <h1>Common Javascript Libraries</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -261,7 +261,7 @@ map(fizzbuzz,
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Starting</div></div>
                 <h1>Existing ClojureScript Libraries</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -274,7 +274,7 @@ map(fizzbuzz,
         <section>
             <div class="content">
                 <div class="unbrokenline"></div>
-                <h1>Building It</h1>
+                <h1>Building</h1>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -285,7 +285,7 @@ map(fizzbuzz,
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">Building It</div></div>
+                <div class="byline"><div class="classy">Building</div></div>
                 <h1>ClojureScript Compiler</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -297,7 +297,7 @@ map(fizzbuzz,
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">Building It</div></div>
+                <div class="byline"><div class="classy">Building</div></div>
                 <h1>Google Closure Compiler</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -309,8 +309,14 @@ map(fizzbuzz,
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">Building It</div></div>
+                <div class="byline"><div class="classy">Building</div></div>
                 <h1>ClojureScript Compiler Usage</h1>
+                <h4>Code API</h4>
+                <pre><code class="clojure">(defproject example1 "0.1.0-SNAPSHOT")</code></pre>
+                <h4>Commandline Tools</h4>
+                <pre><code class="bash">$ cljsc
+$ cljsc
+$ cljsc</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -321,7 +327,7 @@ map(fizzbuzz,
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">Building It</div></div>
+                <div class="byline"><div class="classy">Building</div></div>
                 <h1>lein-cljsbuild</h1>
                 <pre><code class="clojure">(defproject example1 "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure "1.5.1"]
@@ -348,11 +354,14 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">Building It</div></div>
+                <div class="byline"><div class="classy">Building</div></div>
                 <h1>Leiningen Templates</h1>
-                <div style="display:inline-block; vertical-align:top;"><h3>mies</h3><img src="img/template-mies.png" /></div>
-                <div style="display:inline-block; vertical-align:top;"><h3>cljs-austin</h3><img src="img/template-austin.png" /></div>
-                <div style="display:inline-block; vertical-align:top;"><h3>pedestal-app</h3><img src="img/template-pedestal-app.png" /></div>
+                <div style="display:inline-block; vertical-align:top;"><h4>mies</h4><img src="img/template-mies.png" /></div>
+                <div style="display:inline-block; vertical-align:top;"><h4>cljs-austin</h4><img src="img/template-austin.png" /></div>
+                <div style="display:inline-block; vertical-align:top;"><h4>pedestal-app</h4><img src="img/template-pedestal-app.png" /></div>
+                <pre><code class="bash">$ lein new mies example1
+$ lein new cljs-austin example2
+$ lein new pedestal-app example3</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -363,7 +372,7 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Building</div></div>
                 <h1>Editors</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -374,7 +383,7 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Building</div></div>
                 <h1>Testing &amp; Debugging</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -386,7 +395,7 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Building</div></div>
                 <h1>lein-cljsbuild Test Runner</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -398,7 +407,7 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Building</div></div>
                 <h1>ClojureScript.Test</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -410,7 +419,7 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Building</div></div>
                 <h1>REPL</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -422,7 +431,7 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Building</div></div>
                 <h1>Stack Traces</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -434,7 +443,7 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Building</div></div>
                 <h1>Source Maps</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -446,8 +455,8 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
-                <h1>Integrating Clojure and Javascript</h1>
+                <div class="unbrokenline"></div>
+                <h1>Integrating</h1>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -458,7 +467,7 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Integrating</div></div>
                 <h1>this</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -470,7 +479,7 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Integrating</div></div>
                 <h1>^:export metadata</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -482,7 +491,7 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Integrating</div></div>
                 <h1>Node and Node Modules</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -494,7 +503,7 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Integrating</div></div>
                 <h1>Protocols and Extend-Type</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -506,7 +515,7 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Integrating</div></div>
                 <h1>Macro Expansion</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -518,7 +527,7 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Integrating</div></div>
                 <h1>js* Macro</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -530,7 +539,7 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="unbrokenline"></div>
                 <h1>Building Bigger</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -542,7 +551,7 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>EDN</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -554,7 +563,7 @@ $ lein cljsbuild clean
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Objects</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -567,7 +576,7 @@ $ lein cljsbuild clean
         <!-- Available Libraries -->
         <section>
             <div class="content">
-                <div class="unbrokenline"></div>
+                <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Libraries</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -579,7 +588,7 @@ $ lein cljsbuild clean
         <!-- Enfocus -->
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">Libraries</div></div>
+                <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Enfocus, Enliven, and Kioo</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -593,7 +602,7 @@ $ lein cljsbuild clean
         <!-- Quiescent -->
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">Libraries</div></div>
+                <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>React.js</h1>
 Om
 Reagent
@@ -608,7 +617,7 @@ Quiescent
         <!-- Core.Async -->
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">Libraries</div></div>
+                <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Core.Async</h1>
                 <pre style="display: inline-block;"><code class="clojure">(Code Sample)
 </code></pre>                
@@ -626,7 +635,7 @@ Quiescent
         <!-- Core.Match -->
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">Libraries</div></div>
+                <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Core.Match</h1>
                 <pre style="display: inline-block;"><code class="clojure">(Code Sample)
 </code></pre>                
@@ -640,7 +649,7 @@ Quiescent
         <!-- Core.Logic -->
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">Libraries</div></div>
+                <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Core.Logic</h1>
                 <pre style="display: inline-block;"><code class="clojure">
                 </code></pre>
@@ -654,7 +663,7 @@ Quiescent
 
         <section>
             <div class="content">
-                <div class="unbrokenline"></div>
+                <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Frameworks</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -666,7 +675,7 @@ Quiescent
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">Frameworks</div></div>
+                <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Pedestal Applications (v0.2)</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -678,7 +687,7 @@ Quiescent
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">Frameworks</div></div>
+                <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Haplon</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -690,7 +699,7 @@ Quiescent
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">Frameworks</div></div>
+                <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1></h1>
                         <!-- Coils -->
         <!-- Luminus -->
@@ -708,7 +717,7 @@ Quiescent
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy">Frameworks</div></div>
+                <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Community Opinion: Frameworks are generally unnecessary, and too large for their own good.</h1>
                 <div class="unbrokenline"></div>
             </div>
