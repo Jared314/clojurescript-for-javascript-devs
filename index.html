@@ -10,25 +10,6 @@
 </head>
 <body>
     <article id="deck1">
-<!--
-http://4.bp.blogspot.com/-c_iLsyzXl1M/UHZvR59Y3UI/AAAAAAAACDs/h7qAMrBEGPc/s1600/Michael-Hauges-Structure.jpg
-
-Act 1: 
-    Stage 1 (Setup): ClojureScript exists
-    Turning Point 1 (Opportunity): You can use it in web apps
-    Stage 2 (New Situation): You have to integrate with existing JS
-    Turning Point 2 (Change of Plans): Manage state
-Act 2: 
-    Stage 3 (Progress): State management difference from JS and Clojure
-    Turning Point 3 (Point of No Return): ClojureScript app basic architecture
-    Stage 4 (Complications): Node.js and Tooling
-    Turning Point 4 (Major Setback): Putting it all together
-Act 3: 
-    Stage 5 (Final Push): Libraries, and Frameworks
-    Turning Point 5 (Climax): Dracorum
-    Stage 6 (Aftermath): Community and Purpose
-End: 
--->
 
 <!-- Other presentations:
 https://github.com/oakmac/intro-to-cljs/blob/master/index.html
@@ -67,7 +48,6 @@ http://danielsz.github.io/2014/02/28/The-pleasantness-of-Om/
                 <div><a target="_blank" href="http://blog.lobberecht.com/">http://blog.Lobberecht.com</a><br/><a target="_blank" href="https://twitter.com/jared314">@Jared314</a><br/><a target="_blank" href="http://github.com/Jared314">Jared@Lobberecht.com</a>
                 </div>
             </div>
-            <code data-bespoke-autorun>alert(2 + 2);</code>
         </section>
 
         <section>
@@ -293,7 +273,7 @@ map(fizzbuzz,
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="unbrokenline"></div>
                 <h1>Building It</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -305,7 +285,7 @@ map(fizzbuzz,
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Building It</div></div>
                 <h1>ClojureScript Compiler</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -317,7 +297,7 @@ map(fizzbuzz,
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Building It</div></div>
                 <h1>Google Closure Compiler</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -329,7 +309,7 @@ map(fizzbuzz,
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Building It</div></div>
                 <h1>ClojureScript Compiler Usage</h1>
                 <div class="unbrokenline"></div>
             </div>
@@ -341,8 +321,24 @@ map(fizzbuzz,
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Building It</div></div>
                 <h1>lein-cljsbuild</h1>
+                <pre><code class="clojure">(defproject example1 "0.1.0-SNAPSHOT"
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [org.clojure/clojurescript "0.0-2173"]]
+  :plugins [[lein-cljsbuild "1.0.2"]]
+  :source-paths ["src"]
+  :cljsbuild {
+    :builds [{:source-paths ["src"]
+              :compiler {
+                :output-to "main.js"
+                :output-dir "out"
+                :optimizations :none
+                :source-map true}}]})</code></pre>
+                <pre><code class="bash">$ lein cljsbuild once
+$ lein cljsbuild auto
+$ lein cljsbuild clean
+</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -352,8 +348,11 @@ map(fizzbuzz,
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
+                <div class="byline"><div class="classy">Building It</div></div>
                 <h1>Leiningen Templates</h1>
+                <div style="display:inline-block; vertical-align:top;"><h3>mies</h3><img src="img/template-mies.png" /></div>
+                <div style="display:inline-block; vertical-align:top;"><h3>cljs-austin</h3><img src="img/template-austin.png" /></div>
+                <div style="display:inline-block; vertical-align:top;"><h3>pedestal-app</h3><img src="img/template-pedestal-app.png" /></div>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
