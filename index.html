@@ -633,18 +633,17 @@ example1.core.fun1(10); // => 11
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>EDN</h1>
-                <pre><code class="clojure">{:id #uuid "f51d2fa6-7dec-11d0-a765-10a1c93e6bf6"
- :sent #inst "2014-04-12T23:20:50.52Z"
- :from #myns/Employee {:id 1}
- :to #{#myns/Employee {:id 4353}
-       #myns/Employee {:id 512}
-       #myns/Employee {:id 233}
-       "guy1@superemail.com"}
+                <pre><code class="clojure">{:id 12345
  :subject "Something Interesting"
- :message "Sup?"
- :count 2
- :attachments [#myns/File {:name "documents.zip.exe"
-                           :contents "ab45784..."}]}
+ :message ["Sup?" "Yo"]
+ 
+ :sent #inst "2014-04-12T23:20:50.52Z"
+ :gid #uuid "f51d2fa6-7dec-11d0-a765-10a1c93e6bf6"
+
+ :ip #myns/ipaddress "192.168.0.1"
+ :from #myns/Employee {:id 1}
+ :to #{"guy1@superemail.com"
+       #myns/Employee {:id 233}}}
 </code></pre>
                 <div class="unbrokenline"></div>
             </div>
