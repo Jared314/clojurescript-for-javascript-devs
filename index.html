@@ -312,11 +312,11 @@ map(fizzbuzz,
                 <div class="byline"><div class="classy">Building</div></div>
                 <h1>ClojureScript Compiler Usage</h1>
                 <h4>Code API</h4>
-                <pre><code class="clojure">(defproject example1 "0.1.0-SNAPSHOT")</code></pre>
+                <pre><code class="clojure">()</code></pre>
                 <h4>Commandline Tools</h4>
-                <pre><code class="bash">$ cljsc
-$ cljsc
-$ cljsc</code></pre>
+                <pre><code class="bash">CLOJURESCRIPT_HOME="/Users/user1/cljs_src"
+$ cljsc test.cljs > out.js
+$ cljsc src {:optimiztions :advanced} > out.js</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -374,10 +374,24 @@ $ lein new pedestal-app example3</code></pre>
             <div class="content">
                 <div class="byline"><div class="classy">Building</div></div>
                 <h1>Editors</h1>
+                <ol>
+                    <li>Emacs + cider</li>
+                    <li>Vim + vim-fireplace</li>
+                    <li>Light Table</li>
+                    <li>Eclipse + Counterclockwise</li>
+                    <li>Sublime Text</li>
+                    <li>IntelliJ + Cursive Clojure</li>
+                    <li style="">Others...</li>
+                </ol>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
-                
+            From 1000 people:
+                Emacs 50%
+                Vim 10%
+                Light Table 8%
+                Eclipse 8%
+                Sublime Text 6%
             </aside>
         </section>
 
@@ -397,10 +411,29 @@ $ lein new pedestal-app example3</code></pre>
             <div class="content">
                 <div class="byline"><div class="classy">Building</div></div>
                 <h1>lein-cljsbuild Test Runner</h1>
+                <pre><code class="clojure">(defproject example1 "0.1.0-SNAPSHOT"
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [org.clojure/clojurescript "0.0-2138"]]
+  :plugins [[lein-cljsbuild "1.0.2"]]
+  :source-paths ["src"]
+  :cljsbuild { 
+    :builds [{:source-paths ["src" "test"]
+              :compiler {
+                :output-to "main.js"
+                :output-dir "out"
+                :optimizations :whitespace
+                :pretty-print true
+                :source-map "main.js.map"}}]
+    :test-commands {"unit-tests" ["phantomjs" :runner
+                                  "main.js"]}})
+</code></pre>
+                <pre><code class="bash">$ lein cljsbuild test
+$ lein cljsbuild test namespace1
+                </code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
-                
+ cljsbuild contains a test runner designed to work with phantomjs and run existing javascript testing frameworks.
             </aside>
         </section>
 
@@ -409,10 +442,33 @@ $ lein new pedestal-app example3</code></pre>
             <div class="content">
                 <div class="byline"><div class="classy">Building</div></div>
                 <h1>ClojureScript.Test</h1>
+                <pre><code class="clojure">(defproject example1 "0.1.0-SNAPSHOT"
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [org.clojure/clojurescript "0.0-2138"]
+                 [com.cemerick/clojurescript.test "0.2.2"]]
+  :plugins [[lein-cljsbuild "1.0.2"]
+            [com.cemerick/clojurescript.test "0.2.2"]]
+  :source-paths ["src"]
+  :cljsbuild { 
+    :builds [{:id "debugbuild1"
+              :source-paths ["src" "test"]
+              :compiler {
+                :output-to "main.js"
+                :output-dir "out"
+                :optimizations :whitespace
+                :pretty-print true
+                :source-map "main.js.map"}}]
+    :test-commands {"unit-tests" ["phantomjs" :runner
+                                  "main.js"]}})
+</code></pre>
+                <pre><code class="bash">$ lein cljsbuild test
+$ lein cljsbuild test namespace1
+                </code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
-                
+Chas Emerick has a port of the clojure.test library. It is currently a work in progress, but it does work.
+https://github.com/cemerick/clojurescript.test
             </aside>
         </section>
 
@@ -469,6 +525,19 @@ $ lein new pedestal-app example3</code></pre>
             <div class="content">
                 <div class="byline"><div class="classy">Integrating</div></div>
                 <h1>this</h1>
+                <h4>Javascript</h4>
+                <pre><code class="javascript">function calculate() {
+  return this.a + this.b;
+}</code></pre>
+                <h4>ClojureScript</h4>
+                <pre><code class="clojure">(js/calculate 1 2)
+(js/calculate)
+(. #js {"a" 1 "b"} (calculate))
+</code></pre>
+                <h4>Generated Javascript</h4>
+                <pre><code class="javascript">calculate.call(null);
+calculate.call({"a": 1, "b": 2});
+</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -481,6 +550,14 @@ $ lein new pedestal-app example3</code></pre>
             <div class="content">
                 <div class="byline"><div class="classy">Integrating</div></div>
                 <h1>^:export metadata</h1>
+                <pre><code class="clojure">(ns example1.core)
+(defn ^:export fun1 [x] (inc x))
+</code></pre>
+                <pre><code class="javascript">// :optimization :none
+// goog.require("example1.core");
+
+example1.core.fun1(10); // => 11
+</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -529,6 +606,9 @@ $ lein new pedestal-app example3</code></pre>
             <div class="content">
                 <div class="byline"><div class="classy">Integrating</div></div>
                 <h1>js* Macro</h1>
+                <pre><code class="clojure">(js* "1 + 2;")
+</code></pre>
+                
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -553,6 +633,19 @@ $ lein new pedestal-app example3</code></pre>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>EDN</h1>
+                <pre><code class="clojure">{:id #uuid "f51d2fa6-7dec-11d0-a765-10a1c93e6bf6"
+ :sent #inst "2014-04-12T23:20:50.52Z"
+ :from #myns/Employee {:id 1}
+ :to #{#myns/Employee {:id 4353}
+       #myns/Employee {:id 512}
+       #myns/Employee {:id 233}
+       "guy1@superemail.com"}
+ :subject "Something Interesting"
+ :message "Sup?"
+ :count 2
+ :attachments [#myns/File {:name "documents.zip.exe"
+                           :contents "ab45784..."}]}
+</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -590,6 +683,7 @@ $ lein new pedestal-app example3</code></pre>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Enfocus, Enliven, and Kioo</h1>
+
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -607,6 +701,17 @@ $ lein new pedestal-app example3</code></pre>
 Om
 Reagent
 Quiescent
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Building Bigger</div></div>
+                <h1>Secretary</h1>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -764,13 +869,6 @@ Quiescent
         </section>
 
 
-        <!-- Testing
-            cljsbuild contains a test runner designed to work with phantomjs and run existing javascript testing frameworks.
-            Chas Emerick has a port of the clojure.test library. It is currently a work in progress, but it does work.
-            https://github.com/cemerick/clojurescript.test
-            -->
-
-
         <!-- Available "Frameworks" -->
         <!-- Webfui (2011, lower performance compared to React.js)-->
         <!-- Hoplon -->
@@ -782,7 +880,6 @@ Quiescent
         <!-- Event without models -->
 
 
-        <!-- Repeated Intro -->
         <section>
             <div class="content">
                 <div class="unbrokenline"></div>
