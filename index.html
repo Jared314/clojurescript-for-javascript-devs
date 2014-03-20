@@ -312,19 +312,16 @@ map(fizzbuzz,
                 <div class="byline"><div class="classy">Building</div></div>
                 <h1>ClojureScript Compiler Usage</h1>
                 <h4>Code API</h4>
-                <pre><code class="clojure">(ns hello-cljsc.core
-  (:require
-    [clojure.pprint :as pp]
-    [clojure.tools.reader :as reader]
-    [clojure.tools.reader.reader-types :as readers]
-    [cljs.analyzer :as ana]
-    [cljs.compiler :as c]
-    [cljs.closure :as cc]
-    [cljs.env :as env])
-  (:import [java.io StringReader]))
+                <pre><code class="clojure">(cljs.compiler/emit ast)
+(cljs.analyzer/analyze user-env form)
+(cljs.closure/optimize options form-string)
 
-(ana/analyze user-env form)
-  </code></pre>
+(defn read1 [s] ...)
+
+(->> (read1 "(let [x (cond true (+ 1 2) :else (+ 3 4))] x)")
+     (cljs.analyzer/analyze user-env)
+     (#(with-out-str (cljs.compiler/emit %)))
+     (cljs.closure/optimize {:optimizations :simple}))</code></pre>
                 <h4>Commandline Tools</h4>
                 <pre><code class="bash">CLOJURESCRIPT_HOME="/Users/user1/cljs_src"
 $ cljsc test.cljs > out.js
@@ -341,6 +338,7 @@ $ cljsc src {:optimiztions :advanced} > out.js</code></pre>
             <div class="content">
                 <div class="byline"><div class="classy">Building</div></div>
                 <h1>lein-cljsbuild</h1>
+                <h4>project.clj</h4>
                 <pre><code class="clojure">(defproject example1 "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [org.clojure/clojurescript "0.0-2173"]]
@@ -348,11 +346,11 @@ $ cljsc src {:optimiztions :advanced} > out.js</code></pre>
   :source-paths ["src"]
   :cljsbuild {
     :builds [{:source-paths ["src"]
-              :compiler {
-                :output-to "main.js"
-                :output-dir "out"
-                :optimizations :none
-                :source-map true}}]})</code></pre>
+              :compiler { :output-to "main.js"
+                          :output-dir "out"
+                          :optimizations :none
+                          :source-map true}}]})</code></pre>
+                <h4>Usage</h4>
                 <pre><code class="bash">$ lein cljsbuild once
 $ lein cljsbuild auto
 $ lein cljsbuild clean
@@ -371,6 +369,7 @@ $ lein cljsbuild clean
                 <div style="display:inline-block; vertical-align:top;"><h4>mies</h4><img src="img/template-mies.png" /></div>
                 <div style="display:inline-block; vertical-align:top;"><h4>cljs-austin</h4><img src="img/template-austin.png" /></div>
                 <div style="display:inline-block; vertical-align:top;"><h4>pedestal-app</h4><img src="img/template-pedestal-app.png" /></div>
+                <h4>Usage</h4>
                 <pre><code class="bash">$ lein new mies example1
 $ lein new cljs-austin example2
 $ lein new pedestal-app example3</code></pre>
