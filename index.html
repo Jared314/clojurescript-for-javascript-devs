@@ -239,6 +239,20 @@ map(fizzbuzz,
             <div class="content">
                 <div class="byline"><div class="classy">Starting</div></div>
                 <h1>Javascript Interop</h1>
+                <h4>client.cljs (Using Socket.IO)</h4>
+                <pre><code class="clojure">(ns client)
+
+(def socket (.connect 
+              js/io 
+              "http://localhost"))
+
+(defn on-click [event]
+  (when-let [id (.getAttribute (.-target event) "data-id")]
+    (.preventDefault event)
+    (.emit socket "check" id)))
+
+(.addEventListener js/document "click" on-click)
+</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -251,6 +265,17 @@ map(fizzbuzz,
             <div class="content">
                 <div class="byline"><div class="classy">Starting</div></div>
                 <h1>Common Javascript Libraries</h1>
+                <pre><code class="clojure">(defproject example1 "0.1.0-SNAPSHOT"
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [org.clojure/clojurescript "0.0-2173"]]
+  :plugins [[lein-cljsbuild "1.0.2"]]
+  :source-paths ["src"]
+  :cljsbuild {
+    :builds [{:source-paths ["src"]
+              :compiler { :output-to "main.js"
+                          :output-dir "out"
+                          :optimizations :none
+                          :source-map true}}]})</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -263,6 +288,17 @@ map(fizzbuzz,
             <div class="content">
                 <div class="byline"><div class="classy">Starting</div></div>
                 <h1>Existing ClojureScript Libraries</h1>
+                <pre><code class="clojure">(defproject example1 "0.1.0-SNAPSHOT"
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [org.clojure/clojurescript "0.0-2173"]]
+  :plugins [[lein-cljsbuild "1.0.2"]]
+  :source-paths ["src"]
+  :cljsbuild {
+    :builds [{:source-paths ["src"]
+              :compiler { :output-to "main.js"
+                          :output-dir "out"
+                          :optimizations :none
+                          :source-map true}}]})</code></pre>   
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -434,7 +470,7 @@ $ lein new pedestal-app example3</code></pre>
 </code></pre>
                 <pre><code class="bash">$ lein cljsbuild test
 $ lein cljsbuild test namespace1
-                </code></pre>
+</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -443,32 +479,28 @@ $ lein cljsbuild test namespace1
         </section>
 
 
+
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building</div></div>
                 <h1>ClojureScript.Test</h1>
-                <pre><code class="clojure">(defproject example1 "0.1.0-SNAPSHOT"
-  :dependencies [[org.clojure/clojure "1.5.1"]
-                 [org.clojure/clojurescript "0.0-2138"]
-                 [com.cemerick/clojurescript.test "0.2.2"]]
-  :plugins [[lein-cljsbuild "1.0.2"]
-            [com.cemerick/clojurescript.test "0.2.2"]]
-  :source-paths ["src"]
-  :cljsbuild { 
-    :builds [{:id "debugbuild1"
-              :source-paths ["src" "test"]
-              :compiler {
-                :output-to "main.js"
-                :output-dir "out"
-                :optimizations :whitespace
-                :pretty-print true
-                :source-map "main.js.map"}}]
-    :test-commands {"unit-tests" ["phantomjs" :runner
-                                  "main.js"]}})
+                <pre><code class="clojure">[com.cemerick/clojurescript.test "0.3.0"]</code></pre>
+                <h4>Example Tests</h4>
+                <pre><code class="clojure">(ns lego-gears.ratios-test
+  (:require-macros [cemerick.cljs.test :refer [is deftest]])
+  (:require [cemerick.cljs.test :as t]
+            [lego-gears.ratios :as r]))
+
+(deftest addition-tests
+  (is (r/= (r/->ratio 3 2)
+           (r/+ (r/->ratio 1 2) 1)))
+  (is (r/= (r/->ratio 1 2)
+           (r/+ (r/->ratio -1 2) 1))))
+
+(deftest subtraction-tests
+  (is (r/= (r/->ratio 1 2)
+           (r/- 1 (r/->ratio 1 2)))))
 </code></pre>
-                <pre><code class="bash">$ lein cljsbuild test
-$ lein cljsbuild test namespace1
-                </code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -476,6 +508,7 @@ Chas Emerick has a port of the clojure.test library. It is currently a work in p
 https://github.com/cemerick/clojurescript.test
             </aside>
         </section>
+
 
 
         <section>
@@ -763,6 +796,7 @@ Quiescent
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Core.Match</h1>
+                <h4>FizzBuzz</h4>
                 <pre><code class="clojure">(ns foo.bar
   (:require-macros [cljs.core.match.macros :refer [match]])
   (:require [cljs.core.match]))
@@ -786,6 +820,7 @@ Quiescent
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Core.Logic</h1>
+                <h4>Sudoku Solver (Excerpt)</h4>
                 <pre style="display: inline-block;"><code class="clojure">(defn sudokufd [hints]
   (let [vars (repeatedly 81 lvar)
         rows (->> vars (partition 9) (map vec) (into []))

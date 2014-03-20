@@ -385,7 +385,7 @@ pre {
 
 pre > code {
   overflow-y: scroll;
-  max-height: 550px;
+  max-height: 540px;
 }
 
 .bespoke-bullet {
