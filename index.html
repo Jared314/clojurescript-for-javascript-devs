@@ -390,6 +390,8 @@ $ lein new pedestal-app example3</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
+            At a core level, 
+            But, every community has their preference. Visual Studio is dominant in some, . They all edit text. And, you can use them all to edit text. But, total usage can determine plugin support, 
             From over 1000 people:
                 Emacs + cider 50%
                 Vim + vimfireplace 10%
@@ -505,6 +507,15 @@ https://github.com/cemerick/clojurescript.test
             <div class="content">
                 <div class="byline"><div class="classy">Building</div></div>
                 <h1>Source Maps</h1>
+                <div style="display:inline-block;">
+                <h4>Before</h4>
+                <img src="img/sourcemaps-without.png" />
+                </div>
+                <div style="display:inline-block;">
+                <h4>After</h4>
+                <img src="img/sourcemaps-with.png" />
+                </div>
+                <h4>Compiled with Advanced optimizations</h4>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -924,11 +935,13 @@ Quiescent
     <script src="bespoke.min.js"></script>
     <script src="bespoke-keys.min.js"></script>
     <script src="bespoke-run.min.js"></script>
+    <script src="bespoke-hash.min.js"></script>
     <script src="highlight.pack.js"></script>
     <script>
         var deck1 = bespoke.from('article', {
             keys: true,
-            run: true//,
+            run: true,
+            hash: true//,
             // secondary: {
             // // Change the selector used to find notes, in a .bespoke-slide context
             // notes: ".show-notes",
