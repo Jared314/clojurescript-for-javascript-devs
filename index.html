@@ -312,7 +312,19 @@ map(fizzbuzz,
                 <div class="byline"><div class="classy">Building</div></div>
                 <h1>ClojureScript Compiler Usage</h1>
                 <h4>Code API</h4>
-                <pre><code class="clojure">()</code></pre>
+                <pre><code class="clojure">(ns hello-cljsc.core
+  (:require
+    [clojure.pprint :as pp]
+    [clojure.tools.reader :as reader]
+    [clojure.tools.reader.reader-types :as readers]
+    [cljs.analyzer :as ana]
+    [cljs.compiler :as c]
+    [cljs.closure :as cc]
+    [cljs.env :as env])
+  (:import [java.io StringReader]))
+
+(ana/analyze user-env form)
+  </code></pre>
                 <h4>Commandline Tools</h4>
                 <pre><code class="bash">CLOJURESCRIPT_HOME="/Users/user1/cljs_src"
 $ cljsc test.cljs > out.js
@@ -320,7 +332,7 @@ $ cljsc src {:optimiztions :advanced} > out.js</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
-                
+                https://github.com/swannodette/hello-cljsc/blob/master/src/hello_cljsc/core.clj
             </aside>
         </section>
 
@@ -374,23 +386,15 @@ $ lein new pedestal-app example3</code></pre>
             <div class="content">
                 <div class="byline"><div class="classy">Building</div></div>
                 <h1>Editors</h1>
-                <ol>
-                    <li>Emacs + cider</li>
-                    <li>Vim + vim-fireplace</li>
-                    <li>Light Table</li>
-                    <li>Eclipse + Counterclockwise</li>
-                    <li>Sublime Text</li>
-                    <li>IntelliJ + Cursive Clojure</li>
-                    <li style="">Others...</li>
-                </ol>
+                <div id="piechart" style="width: 600px; height: 480px; position: relative;"><div dir="ltr" style="position: relative; width: 600px; height: 480px;"><div style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"><svg width="600" height="480" style="overflow: hidden;"><defs id="defs"></defs><rect x="0" y="0" width="600" height="480" stroke="none" stroke-width="0" fill="#111111"></rect><g><text text-anchor="start" x="70" y="62.05" font-family="Arial" font-size="13" font-weight="bold" stroke="none" stroke-width="0" fill="#ffffff">2013 State of Clojure Survey</text></g><g><rect x="400" y="85" width="170" height="160" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><rect x="400" y="85" width="170" height="13" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><text text-anchor="start" x="418" y="96.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#ffffff">Emacs</text></g><rect x="400" y="85" width="13" height="13" stroke="none" stroke-width="0" fill="#3366cc"></rect></g><g><rect x="400" y="106" width="170" height="13" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><text text-anchor="start" x="418" y="117.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#ffffff">Vim</text></g><rect x="400" y="106" width="13" height="13" stroke="none" stroke-width="0" fill="#dc3912"></rect></g><g><rect x="400" y="127" width="170" height="13" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><text text-anchor="start" x="418" y="138.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#ffffff">Light Table</text></g><rect x="400" y="127" width="13" height="13" stroke="none" stroke-width="0" fill="#ff9900"></rect></g><g><rect x="400" y="148" width="170" height="13" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><text text-anchor="start" x="418" y="159.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#ffffff">Eclipse</text></g><rect x="400" y="148" width="13" height="13" stroke="none" stroke-width="0" fill="#109618"></rect></g><g><rect x="400" y="169" width="170" height="13" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><text text-anchor="start" x="418" y="180.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#ffffff">Sublime Text</text></g><rect x="400" y="169" width="13" height="13" stroke="none" stroke-width="0" fill="#990099"></rect></g><g><rect x="400" y="190" width="170" height="13" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><text text-anchor="start" x="418" y="201.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#ffffff">IntelliJ</text></g><rect x="400" y="190" width="13" height="13" stroke="none" stroke-width="0" fill="#0099c6"></rect></g><g><rect x="400" y="211" width="170" height="13" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><text text-anchor="start" x="418" y="222.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#ffffff">Textmate</text></g><rect x="400" y="211" width="13" height="13" stroke="none" stroke-width="0" fill="#dd4477"></rect></g><g><rect x="400" y="232" width="170" height="13" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><text text-anchor="start" x="418" y="243.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#ffffff">Other</text></g><rect x="400" y="232" width="13" height="13" stroke="none" stroke-width="0" fill="#ffffff"></rect></g></g><g><path d="M222.7281037333386,219.37541496815965L177.82872517210822,78.35043205798412A148,148,0,0,1,222.7281037333386,71.37541496815965L222.7281037333386,219.37541496815965A0,0,0,0,0,222.7281037333386,219.37541496815965" stroke="#333333" stroke-width="1" fill="#ffffff"></path><text text-anchor="start" x="188.2241505722474" y="98.02513098421232" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">Other</text></g><g><path d="M220.34319551335102,219.95171996388433L172.11302905926243,80.030845739161A148,148,0,0,1,175.44381695212064,78.92673705370882L220.34319551335102,219.95171996388433A0,0,0,0,0,220.34319551335102,219.95171996388433" stroke="#333333" stroke-width="1" fill="#dd4477"></path></g><g><path d="M217.51154104238114,221.23430446704694L118.91561161437133,110.85838906777677A148,148,0,0,1,169.28137458829258,81.31343024232359L217.51154104238114,221.23430446704694A0,0,0,0,0,217.51154104238114,221.23430446704694" stroke="#333333" stroke-width="1" fill="#0099c6"></path><text text-anchor="start" x="138.56850173577163" y="120.69137446682028" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">IntelliJ</text></g><g><path d="M213.15677072949146,225.1243073258382L79.54269189456159,161.4746573889133A148,148,0,0,1,114.5608413014817,114.748391926568L213.15677072949146,225.1243073258382A0,0,0,0,0,213.15677072949146,225.1243073258382" stroke="#333333" stroke-width="1" fill="#990099"></path></g><g><path d="M210.4908317495405,231.08040470615234L62.65720301343004,238.0959741565824A148,148,0,0,1,76.87675291461062,167.43075476922746L210.4908317495405,231.08040470615234A0,0,0,0,0,210.4908317495405,231.08040470615234" stroke="#333333" stroke-width="1" fill="#109618"></path><text text-anchor="start" x="77.55891106777284" y="212.555773048702" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">Eclipse</text></g><g><path d="M210.8581382850304,238.36437249036757L84.78212619762515,315.88107505269534A148,148,0,0,1,63.02450954891995,245.37994194079764L210.8581382850304,238.36437249036757A0,0,0,0,0,210.8581382850304,238.36437249036757" stroke="#333333" stroke-width="1" fill="#ff9900"></path><text text-anchor="start" x="79.98163314861429" y="273.5419387066242" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">Light Table</text></g><g><path d="M216.9516086244032,246.42028164999567L197.7062153397327,393.16364551125616A148,148,0,0,1,90.87559653699795,323.9369842123234L216.9516086244032,246.42028164999567A0,0,0,0,0,216.9516086244032,246.42028164999567" stroke="#333333" stroke-width="1" fill="#dc3912"></path><text text-anchor="start" x="138.39838118313298" y="355.6400567288529" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">Vim</text></g><g><path d="M239.7685506823565,234.96431879721754L239.7685506823565,86.96431879721753A148,148,0,1,1,220.52315739768596,381.70768265847806L239.7685506823565,234.96431879721754A0,0,0,1,0,239.7685506823565,234.96431879721754" stroke="#333333" stroke-width="1" fill="#3366cc"></path><text text-anchor="start" x="338.084073514618" y="246.7918380370384" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">Emacs</text></g><g></g></svg></div></div><div style="display: none; position: absolute; top: 490px; left: 610px; white-space: nowrap; font-family: Arial; font-size: 13px;">Other</div><div></div></div>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
-            From 1000 people:
-                Emacs 50%
-                Vim 10%
+            From over 1000 people:
+                Emacs + cider 50%
+                Vim + vimfireplace 10%
                 Light Table 8%
-                Eclipse 8%
+                Eclipse + Counter Clockwise 8%
                 Sublime Text 6%
             </aside>
         </section>
@@ -736,13 +740,22 @@ Quiescent
             </aside>
         </section>
 
-        <!-- Core.Match -->
+
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Core.Match</h1>
-                <pre style="display: inline-block;"><code class="clojure">(Code Sample)
-</code></pre>                
+                <pre><code class="clojure">(ns foo.bar
+  (:require-macros [cljs.core.match.macros :refer [match]])
+  (:require [cljs.core.match]))
+
+(doseq [n (range 1 101)]
+  (println
+    (match [(mod n 3) (mod n 5)]
+      [0 0] "FizzBuzz"
+      [0 _] "Fizz"
+      [_ 0] "Buzz"
+      :else n)))</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -750,13 +763,25 @@ Quiescent
             </aside>
         </section>
 
-        <!-- Core.Logic -->
+
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Core.Logic</h1>
-                <pre style="display: inline-block;"><code class="clojure">
-                </code></pre>
+                <pre style="display: inline-block;"><code class="clojure">(defn sudokufd [hints]
+  (let [vars (repeatedly 81 lvar)
+        rows (->> vars (partition 9) (map vec) (into []))
+        cols (apply map vector rows)
+        sqs  (for [x (range 0 9 3)
+                   y (range 0 9 3)]
+               (get-square rows x y))]
+    (run 1 [q]
+      (== q vars)
+      (everyg #(fd/in % (fd/domain 1 2 3 4 5 6 7 8 9)) vars)
+      (init vars hints)
+      (everyg fd/distinct rows)
+      (everyg fd/distinct cols)
+      (everyg fd/distinct sqs))))</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -895,7 +920,7 @@ Quiescent
         </section>        
 
     </article>
-
+    
     <script src="bespoke.min.js"></script>
     <script src="bespoke-keys.min.js"></script>
     <script src="bespoke-run.min.js"></script>
