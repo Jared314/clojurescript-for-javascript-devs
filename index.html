@@ -516,6 +516,32 @@ https://github.com/cemerick/clojurescript.test
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building</div></div>
+                <h1>Speclj</h1>
+                <pre><code class="clojure">[speclj "3.0.2"]</code></pre>
+                <h4>Example Tests</h4>
+                <pre><code class="clojure">(ns change-counter.core-spec
+  (:require-macros [specljs.core :refer [describe it should=]])
+  (:require [specljs.core]
+            [change-counter.core :as core]))
+
+(describe "change-counter.core"
+    (it "tests a simple function")
+        (should= true (equals5? 5)))
+</code></pre>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+http://speclj.com/specljs
+https://github.com/slagyr/speclj/
+
+            </aside>
+        </section>
+
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Building</div></div>
                 <h1>REPL</h1>
                 <div class="unbrokenline"></div>
             </div>
