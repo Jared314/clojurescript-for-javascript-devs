@@ -234,7 +234,7 @@ map(fizzbuzz,
             </aside>
         </section>
 
-
+<!-- Add js->clj clj->js #js literals -->
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Starting</div></div>
@@ -265,17 +265,10 @@ map(fizzbuzz,
             <div class="content">
                 <div class="byline"><div class="classy">Starting</div></div>
                 <h1>Common Javascript Libraries</h1>
-                <pre><code class="clojure">(defproject example1 "0.1.0-SNAPSHOT"
-  :dependencies [[org.clojure/clojure "1.5.1"]
-                 [org.clojure/clojurescript "0.0-2173"]]
-  :plugins [[lein-cljsbuild "1.0.2"]]
-  :source-paths ["src"]
-  :cljsbuild {
-    :builds [{:source-paths ["src"]
-              :compiler { :output-to "main.js"
-                          :output-dir "out"
-                          :optimizations :none
-                          :source-map true}}]})</code></pre>
+                <h4>Google Closure Library</h4>
+                <pre><code class="clojure">
+                    
+                </code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -288,17 +281,12 @@ map(fizzbuzz,
             <div class="content">
                 <div class="byline"><div class="classy">Starting</div></div>
                 <h1>Existing ClojureScript Libraries</h1>
-                <pre><code class="clojure">(defproject example1 "0.1.0-SNAPSHOT"
-  :dependencies [[org.clojure/clojure "1.5.1"]
-                 [org.clojure/clojurescript "0.0-2173"]]
-  :plugins [[lein-cljsbuild "1.0.2"]]
-  :source-paths ["src"]
-  :cljsbuild {
-    :builds [{:source-paths ["src"]
-              :compiler { :output-to "main.js"
-                          :output-dir "out"
-                          :optimizations :none
-                          :source-map true}}]})</code></pre>   
+                <h4>JayQ</h4>
+                <pre><code class="clojure">(-> ($ :#interface)
+    (css {:background "blue"}))</code></pre>
+                <h4>Hiccups, Crate, &amp; Dommy</h4>
+                <pre><code class="clojure">(html [:span {:class "foo"} "bar"])</code></pre>
+                <h4>Hiccups, Crate, &amp; Dommy</h4>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -467,16 +455,15 @@ $ lein new pedestal-app example3</code></pre>
                 :optimizations :whitespace
                 :pretty-print true
                 :source-map "main.js.map"}}]
-    :test-commands {"unit-tests" ["phantomjs" :runner
-                                  "main.js"]}})
+    :test-commands {"my-test" ["phantomjs" :runner "main.js"]}})
 </code></pre>
                 <pre><code class="bash">$ lein cljsbuild test
-$ lein cljsbuild test namespace1
+$ lein cljsbuild test my-test
 </code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
- cljsbuild contains a test runner designed to work with phantomjs and run existing javascript testing frameworks.
+ cljsbuild contains a test runner designed to work with phantomjs and run existing javascript testing frameworks. There is currently no built-in auto-test runner, but that is a planned feature. And, there is a workaround to do it yourself.
             </aside>
         </section>
 
@@ -543,10 +530,11 @@ https://github.com/slagyr/speclj/
             <div class="content">
                 <div class="byline"><div class="classy">Building</div></div>
                 <h1>REPL</h1>
+
                 <div class="unbrokenline"></div>
             </div>
             <aside>
-                
+                Because of ClojureScript's compiled nature, a full REPL is only achievable through a bridge between the browser and a JVM instance running the compiler in the background. The three major approaches are the included commandline REPL, the integrated bREPL, and a project called Austin.
             </aside>
         </section>
 
@@ -665,6 +653,8 @@ example1.core.fun1(10); // => 11
             <div class="content">
                 <div class="byline"><div class="classy">Integrating</div></div>
                 <h1>Protocols and Extend-Type</h1>
+                <pre><code class="clojure">
+                </code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -677,6 +667,8 @@ example1.core.fun1(10); // => 11
             <div class="content">
                 <div class="byline"><div class="classy">Integrating</div></div>
                 <h1>Macro Expansion</h1>
+                <pre><code class="clojure">
+                </code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -691,7 +683,6 @@ example1.core.fun1(10); // => 11
                 <h1>js* Macro</h1>
                 <pre><code class="clojure">(js* "1 + 2;")
 </code></pre>
-                
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -712,44 +703,8 @@ example1.core.fun1(10); // => 11
         </section>
 
 
-        <section>
-            <div class="content">
-                <div class="byline"><div class="classy">Building Bigger</div></div>
-                <h1>EDN</h1>
-                <pre><code class="clojure">{:id 12345
- :subject "Something Interesting"
- :message ["Sup?" "Yo"]
- 
- :sent #inst "2014-04-12T23:20:50.52Z"
- :gid #uuid "f51d2fa6-7dec-11d0-a765-10a1c93e6bf6"
 
- :ip #myns/ipaddress "192.168.0.1"
- :from #myns/Employee {:id 1}
- :to #{"guy1@superemail.com"
-       #myns/Employee {:id 233}}}
-</code></pre>
-                <div class="unbrokenline"></div>
-            </div>
-            <aside>
-                
-            </aside>
-        </section>
-
-
-        <section>
-            <div class="content">
-                <div class="byline"><div class="classy">Building Bigger</div></div>
-                <h1>Objects</h1>
-                <div class="unbrokenline"></div>
-            </div>
-            <aside>
-                
-            </aside>
-        </section>
-
-
-        <!-- Available Libraries -->
-        <section>
+       <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Libraries</h1>
@@ -760,7 +715,8 @@ example1.core.fun1(10); // => 11
             </aside>
         </section>
 
-        <!-- Enfocus -->
+
+
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
@@ -848,6 +804,7 @@ Quiescent
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Core.Logic</h1>
+
                 <h4>Sudoku Solver (Excerpt)</h4>
                 <pre style="display: inline-block;"><code class="clojure">(defn sudokufd [hints]
   (let [vars (repeatedly 81 lvar)
@@ -871,6 +828,84 @@ Quiescent
         </section>
 
 
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Building Bigger</div></div>
+                <h1>Core.Typed</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Building Bigger</div></div>
+                <h1>Prismatic schema</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Building Bigger</div></div>
+                <h1>Core.Async + Core.Match + Om</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Building Bigger</div></div>
+                <h1>Objects</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Building Bigger</div></div>
+                <h1>Extensible Data Notation (EDN)</h1>
+                <pre><code class="clojure">{:id 12345
+ :subject "Something Interesting"
+ :message ["Sup?" "Yo"]
+ 
+ :sent #inst "2014-04-12T23:20:50.52Z"
+ :gid #uuid "f51d2fa6-7dec-11d0-a765-10a1c93e6bf6"
+
+ :ip #myns/ipaddress "192.168.0.1"
+ :from #myns/Employee {:id 1}
+ :to #{"guy1@superemail.com"
+       #myns/Employee {:id 233}}}
+</code></pre>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+
+
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
@@ -890,7 +925,11 @@ Quiescent
                 <div class="unbrokenline"></div>
             </div>
             <aside>
-                
+        <!-- Pedestal -->
+        <!-- Pedestal Applications -->
+        <!-- Event flow -->
+        <!-- Large models -->
+        <!-- Event without models -->                
             </aside>
         </section>
 
@@ -928,7 +967,8 @@ Quiescent
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
-                <h1>Community Opinion: Frameworks are generally unnecessary, and too large for their own good.</h1>
+                <h1>Community Opinion</h1>
+                <h3>Frameworks are generally unnecessary, <br/>and too large for their own good.</h3>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -940,49 +980,34 @@ Quiescent
 
         <section>
             <div class="content">
-                <div class="byline"><div class="classy"></div></div>
-                <h1>Online Resources</h1>
+                <div class="unbrokenline"></div>
+                <h1>Resources</h1>
+                <div style="display:inline-block; vertical-align:top; font-size: 1.1em;">
+                    <h4>Online</h4>
+                    <ul>
+                    <li><a href="http://clojure.org/cheatsheet">Clojure Cheat Sheet</a></li>
+                    <li><a href="http://stackoverflow.com/questions/tagged/clojurescript">StackOverflow</a></li>
+                    <li>#clojure and #clojurescript IRC Channels</li>
+                    <li><a href="https://groups.google.com/forum/#!forum/clojure">Clojure</a> and <a href="https://groups.google.com/forum/#!forum/clojurescript">ClojureScript</a> Google Groups</li>
+                    </ul>
+                </div>
+                <div style="display:inline-block; vertical-align:top; font-size: 1.1em;">
+                    <h4>Offline</h4>
+                    <ul>
+                    <li><a href="http://www.meetup.com/Clojure-Houston-User-Group/">Clojure Houston User Group</a></li>
+                    <li><a href="http://www.meetup.com/Austin-Clojure-Meetup/">Austin Clojure Meetup</a></li>
+                    <li><a href="http://clojure-conj.org/">Clojure/conj</a></li>
+                    <li><a href="http://www.clojurewest.org/">Clojure/West</a></li>
+                    <li><a href="http://www.clojurebridge.org/">ClojureBridge</a></li>
+                    <li><a href="https://thestrangeloop.com/">StrangeLoop</a>, <a href="http://www.lambdajam.com/">Lambda Jam</a>, ...</li>
+                    </ul>
+                </div>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
                 
             </aside>
         </section>
-
-
-        <section>
-            <div class="content">
-                <div class="byline"><div class="classy"></div></div>
-                <h1>User Groups</h1>
-                <div class="unbrokenline"></div>
-            </div>
-            <aside>
-                
-            </aside>
-        </section>
-
-
-        <section>
-            <div class="content">
-                <div class="byline"><div class="classy"></div></div>
-                <h1>Conferences</h1>
-                <div class="unbrokenline"></div>
-            </div>
-            <aside>
-                
-            </aside>
-        </section>
-
-
-        <!-- Available "Frameworks" -->
-        <!-- Webfui (2011, lower performance compared to React.js)-->
-        <!-- Hoplon -->
-
-        <!-- Pedestal -->
-        <!-- Pedestal Applications -->
-        <!-- Event flow -->
-        <!-- Large models -->
-        <!-- Event without models -->
 
 
         <section>
