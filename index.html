@@ -227,12 +227,47 @@ map(fizzbuzz,
             <div class="content">
                 <div class="byline"><div class="classy">Starting</div></div>
                 <h1>Single Atom Architecture</h1>
+                <img src="img/single-atom.svg" width="600" alt="Single Atom architecture diagram"/>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
                 
             </aside>
         </section>
+
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Starting</div></div>
+                <h1>Single Atom Architecture</h1>
+                <pre><code class="clojure">(ns example1.core)
+
+(def state (atom {:selected false}))
+
+(defn toggle [event]
+  (swap! state update-in [:selected] not))
+
+(defn updatebg []
+  (let [color (.toString (Math/floor (* (Math/random) 16777216)) 16)
+        colorstr (str (.slice "#000000" 0 (- (count color))) color)]
+    (set! (.. js/document -body -style -backgroundColor) colorstr)))
+
+(add-watch state :watch-change1
+  (fn [key a oldv newv] 
+    (when-not (= (:selected oldv) (:selected newv))
+      (updatebg))))
+
+(.addEventListener js/document "click" toggle)
+</code></pre>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
 
 <!-- Add js->clj clj->js #js literals -->
         <section>
