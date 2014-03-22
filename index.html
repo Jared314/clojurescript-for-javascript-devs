@@ -316,18 +316,20 @@ map(fizzbuzz,
             <div class="content">
                 <div class="byline"><div class="classy">Starting</div></div>
                 <h1>Existing ClojureScript Libraries</h1>
-                <h4>JayQ</h4>
-                <pre><code class="clojure">(-> ($ :#interface)
-    (css {:background "blue"}))</code></pre>
-                <h4>Hiccups, Crate, &amp; Dommy</h4>
+                <h4><a href="https://github.com/teropa/hiccups">Hiccups</a>, <a href="https://github.com/ibdknox/crate">Crate</a>, &amp; <a href="https://github.com/teropa/hiccups">Dommy</a></h4>
                 <pre><code class="clojure">(html [:span {:class "foo"} "bar"])</code></pre>
-                <h4>Hiccups, Crate, &amp; Dommy</h4>
+                <h4><a href="https://github.com/gf3/secretary">Secretary</a></h4>
+                <pre><code class="clojure">(defroute "/users/:id" {:as params}
+  (js/console.log (str "User: " (:id params))))</code></pre>
+                <h4>JayQ</h4>
+                <pre><code class="clojure">(css ($ :#interface) {:background "blue"})</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
                 
             </aside>
         </section>
+
 
 
         <section>
@@ -340,6 +342,7 @@ map(fizzbuzz,
                 
             </aside>
         </section>
+
 
 
         <section>
@@ -755,8 +758,18 @@ example1.core.fun1(10); // => 11
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
-                <h1>Enfocus, Enliven, and Kioo</h1>
+                <h1>Selector-based Templating</h1>
+                <h4><a href="https://github.com/ckirkendall/enfocus">Enfocus</a></h4>
+                <pre style="display: inline-block;"><code class="clojure">(defsnippet snippet2 "templates/template1.html" ["tbody > *:first-child"]
+  [fruit quantity]
+  ["tr > *:last-child"] (content (str fruit ":" quantity)))
+</code></pre>
 
+<h4><a href="https://github.com/ckirkendall/kioo">Kioo</a></h4>
+<pre style="display: inline-block;"><code class="clojure">(defsnippet my-nav-item "main.html" [:.nav-item]
+  [[caption func]]
+  {[:a] (do-> (content caption)
+              (listen :on-click func))})</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -781,18 +794,8 @@ Quiescent
             </aside>
         </section>
 
-        <section>
-            <div class="content">
-                <div class="byline"><div class="classy">Building Bigger</div></div>
-                <h1>Secretary</h1>
-                <div class="unbrokenline"></div>
-            </div>
-            <aside>
-                
-            </aside>
-        </section>
 
-        <!-- Core.Async -->
+        
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
@@ -839,7 +842,6 @@ Quiescent
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Core.Logic</h1>
-
                 <h4>Sudoku Solver (Excerpt)</h4>
                 <pre style="display: inline-block;"><code class="clojure">(defn sudokufd [hints]
   (let [vars (repeatedly 81 lvar)
@@ -868,6 +870,9 @@ Quiescent
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Core.Typed</h1>
+                <pre style="display: inline-block;"><code class="clojure">
+                    
+                </code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
