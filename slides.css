@@ -31,83 +31,6 @@ article::after {
   width: 100%;
   height: 100%;
 }
-.triforce::before {
-  background-image: url(http://media2.giphy.com/media/OkxQtbwBGfvz2/giphy.gif);
-}
-.sword-in-stone::before {
-  background-image: url(http://media.giphy.com/media/O8cVmUlq8UPD2/giphy.gif);
-}
-.start-screen-ocarina::before {
-  -webkit-filter: none;
-  background-image: url(http://media.giphy.com/media/8alyMP2G6yK9a/giphy.gif);
-}
-.love::before {
-  background-image: url(http://media.giphy.com/media/22K7rEgLeHFjq/giphy.gif);
-}
-.power::before {
-  -webkit-filter: grayscale(0.6) brightness(0.3);
-  background-image: url(http://media.giphy.com/media/YWUpVw86AtIbe/giphy.gif);
-}
-.headache::before {
-  background-image: url(http://media.giphy.com/media/ECXp8lr1uXkPK/giphy.gif);
-}
-.dance-scarecrow::before {
-  background-image: url(http://media.giphy.com/media/wR0R8pa1shzqg/giphy.gif);
-  background-size: contain;
-}
-.dancing-link::before {
-  background-image: url(http://media0.giphy.com/media/M1NOT7lbXxTBC/giphy.gif);
-  background-size: contain;
-}
-.scared-link::before {
-  background-size: contain;
-  background-image: url(http://media.giphy.com/media/MFpXz4D4hwzpm/giphy.gif);
-}
-.kill-navi::before {
-  -webkit-filter: grayscale(.5) brightness(.6);
-  background-image: url(http://media.giphy.com/media/HfAdbJfq085G0/giphy.gif);
-}
-.werewolf::before {
-  background-image: url(http://media.giphy.com/media/EARCyC4VIR38c/giphy.gif);
-}
-.kick-spider::before {
-  background-image: url(http://media.giphy.com/media/T98oaLy0nR6h2/giphy.gif);
-}
-.legend-of-link::before {
-  background-image: url(http://3.bp.blogspot.com/-XJAkHzHrOoA/Tsk8iyN12kI/AAAAAAAACts/Vh_hlMGdwo8/s1600/Capture.JPG);
-}
-.enter-the-dungeon::before {
-  background-image: url(http://media.giphy.com/media/lKn0D3eTtNc9W/giphy.gif)
-}
-.fly::before {
-  background-image: url(http://media.giphy.com/media/F9x9vAgPTzG5G/giphy.gif);
-}
-.wink::before {
-  background-image: url(http://media.giphy.com/media/MfdPKnamXSnqo/giphy.gif);
-}
-.copy::before {
-  background-image: url(http://media1.giphy.com/media/zQmvszsSAKrJu/giphy.gif);
-  background-size: contain;
-}
-.heavy-frameworks::before {
-  background-image: url(http://media.giphy.com/media/RNki6LLwbzbwY/giphy.gif);
-}
-.heavy-frameworks-2::before {
-  background-image: url(http://media.giphy.com/media/RNki6LLwbzbwY/giphy.gif);
-  -webkit-filter: grayscale(0.6) brightness(0.2);
-}
-.triforce2::before{
-  background-image: url(http://media3.giphy.com/media/7eae0YS5NSJ8s/giphy.gif);
-}
-.love::before {
-  background-image: url(http://media1.giphy.com/media/13sgibUDaaaEU0/giphy.gif);
-}
-.bomb::before {
-  background-image: url(http://media.giphy.com/media/10nhd1gZ3zKzo4/giphy.gif);
-}
-.attitude::before {
-  background-image: url(http://media.giphy.com/media/Bs2W3V9dpQfMk/giphy.gif);
-}
 
 article.code {
   background-color: #fbeecb;
@@ -358,15 +281,15 @@ section .classy.large {
 
 section .me {
   margin: 10px auto;
-  width: 120px;
-  height: 120px;
-  -webkit-border-radius: 120px;
-  -moz-border-radius: 120px;
-  -ms-border-radius: 120px;
-  -o-border-radius: 120px;
-  border-radius: 120px;
-  background-image: url("./img/matt.jpg");
-  background-size: 120px;
+  width: 100px;
+  height: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  border-radius: 100px;
+  background-image: url("./img/jared.jpg");
+  background-size: 100px;
 }
 
 pre, code {
