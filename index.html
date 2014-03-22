@@ -317,10 +317,12 @@ map(fizzbuzz,
                 <div class="byline"><div class="classy">Starting</div></div>
                 <h1>Existing ClojureScript Libraries</h1>
                 <h4><a href="https://github.com/teropa/hiccups">Hiccups</a>, <a href="https://github.com/ibdknox/crate">Crate</a>, &amp; <a href="https://github.com/teropa/hiccups">Dommy</a></h4>
-                <pre><code class="clojure">(html [:span {:class "foo"} "bar"])</code></pre>
+                <pre><code class="clojure">(html [:div {:class "foo"} 
+        [:h1 "Jared"]
+        [:img {:src "img/jared.jpg"}]])</code></pre>
                 <h4><a href="https://github.com/gf3/secretary">Secretary</a></h4>
                 <pre><code class="clojure">(defroute "/users/:id" {:as params}
-  (js/console.log (str "User: " (:id params))))</code></pre>
+  (println (str "User: " (:id params))))</code></pre>
                 <h4>JayQ</h4>
                 <pre><code class="clojure">(css ($ :#interface) {:background "blue"})</code></pre>
                 <div class="unbrokenline"></div>
@@ -625,7 +627,7 @@ https://github.com/slagyr/speclj/
                 <div class="unbrokenline"></div>
             </div>
             <aside>
-                
+                We can't all be lucky enough to land green-field projects. So, when you have , there are somethings to keep in mind when integrating ClojureScript into existing projects.
             </aside>
         </section>
 
@@ -634,25 +636,39 @@ https://github.com/slagyr/speclj/
             <div class="content">
                 <div class="byline"><div class="classy">Integrating</div></div>
                 <h1>this</h1>
-                <h4>Javascript</h4>
-                <pre><code class="javascript">function calculate() {
-  return this.a + this.b;
-}</code></pre>
+                <h4>External Javascript</h4>
+                <pre><code class="javascript">var SuperMath = {
+    a: 2,
+    calculate: function() {
+      return this.a + this.a;
+    }
+};
+
+SuperMath.calculate(); // => 4
+</code></pre>
+                <div style="display:inline-block; vertical-align:top;">
                 <h4>ClojureScript</h4>
-                <pre><code class="clojure">(js/calculate 1 2)
-(js/calculate)
-(. #js {"a" 1 "b"} (calculate))
-</code></pre>
+                <pre><code class="clojure">(SuperMath/calculate)
+((aget js/SuperMath "calculate"))
+(.calculate SuperMath))
+(.calculate js/SuperMath)
+(. js/SuperMath (calculate))
+</code></pre></div>
+                <div style="display:inline-block; vertical-align:top;">
                 <h4>Generated Javascript</h4>
-                <pre><code class="javascript">calculate.call(null);
-calculate.call({"a": 1, "b": 2});
-</code></pre>
+                <pre><code class="javascript">SuperMath.calculate.call(null);
+(SuperMath["calculate"]).call(null);
+example1.core.SuperMath.calculate();
+SuperMath.calculate();
+SuperMath.calculate();
+</code></pre></div>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
-                
+                There is an interesting mismatch between Javascript and ClojureScript. Javascript lacks a builtin namespace or module system. So, programmers, needing to organize larger codebases, have filled that gap by using objects as containers for their functionality. When you try to call those functions from ClojureScript, using the ClojureScript namespace syntax, it will set this to null.
             </aside>
         </section>
+
 
 
         <section>
@@ -718,13 +734,33 @@ example1.core.fun1(10); // => 11
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Integrating</div></div>
-                <h1>js* Macro</h1>
-                <pre><code class="clojure">(js* "1 + 2;")
-</code></pre>
+                <h1>js*</h1>
+                <div style="display:inline-block; vertical-align:top;">
+                <h4>ClojureScript</h4>
+                <pre><code class="clojure">(js* "1 + 2")
+
+(+ 2 (js* "1 + 2"))
+
+(js* 5)
+
+(let [x "foo"]
+  (js* (str "Math." x "()")))
+</code></pre></div>
+                <div style="display:inline-block; vertical-align:top;">
+                <h4>Generated Javascript</h4>
+                <pre><code class="javascript">1 + 2;
+
+(2 + 1 + 2);
+
+// Compiler Exception: Invalid js* form
+
+// Compiler Exception: Invalid js* form
+//
+</code></pre></div>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
-                
+                When all else fails, and you need to output some exact string of Javascript, there is js*. This should only be used as a method of last resort, in the same way you should never use eval. Because, you are effectively bypassing all of the advantages of the ClojureScript compiler. js* only allows string literals as arguments.
             </aside>
         </section>
 
@@ -763,13 +799,18 @@ example1.core.fun1(10); // => 11
                 <pre style="display: inline-block;"><code class="clojure">(defsnippet snippet2 "templates/template1.html" ["tbody > *:first-child"]
   [fruit quantity]
   ["tr > *:last-child"] (content (str fruit ":" quantity)))
+
+(snippet2 "apple" 2)
 </code></pre>
 
 <h4><a href="https://github.com/ckirkendall/kioo">Kioo</a></h4>
 <pre style="display: inline-block;"><code class="clojure">(defsnippet my-nav-item "main.html" [:.nav-item]
   [[caption func]]
   {[:a] (do-> (content caption)
-              (listen :on-click func))})</code></pre>
+              (listen :on-click func))})
+
+(my-nav-item ["Item1" click-handler1])
+</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -800,8 +841,24 @@ Quiescent
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Core.Async</h1>
-                <pre style="display: inline-block;"><code class="clojure">(Code Sample)
-</code></pre>                
+                <div style="display: inline-block;">
+                <h4>Alice</h4>
+                <pre><code class="clojure">(defn alice [c]
+  (go (while true
+        (&lt;! c)
+        (&gt;! c "Hello"))))</code></pre></div>
+                <div style="display: inline-block;">
+                <h4>Bob</h4>
+                <pre><code class="clojure">(defn bob [c]
+  (go (while true
+        (&lt;! c)
+        (&gt;! c "Hello"))))</code></pre></div>
+                <h4>Start the Conversation</h4>
+                <pre><code class="clojure">(let [c (chan)]
+  (alice c)
+  (bob c)
+  (go (&gt;! c "Hello")))
+</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -865,14 +922,33 @@ Quiescent
         </section>
 
 
+<!-- Javascript developers might not be as concerned with types or schema validation.
+        
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Building Bigger</div></div>
+                <h1><a href="https://github.com/clojure/core.typed">Core.Typed</a></h1>
+                <pre style="display: inline-block;"><code class="clojure">(ns example1.core
+  (:require [cljs.core.typed :as t])
+  (:require-macros [cljs.core.typed :as t]))
+
+(t/ann my-identity (All [x] [x -> (U x t/Number)]))
+(defn my-identity [x]
+  (if (number? x)
+    (inc x)
+    x))                    
+</code></pre>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                Could not get simple example to work correctly (core.typed 0.2.39).
+            </aside>
+        </section>
 
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
-                <h1>Core.Typed</h1>
-                <pre style="display: inline-block;"><code class="clojure">
-                    
-                </code></pre>
+                <h1><a href="https://github.com/prismatic/schema">Prismatic schema</a></h1>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -880,19 +956,7 @@ Quiescent
             </aside>
         </section>
 
-
-        <section>
-            <div class="content">
-                <div class="byline"><div class="classy">Building Bigger</div></div>
-                <h1>Prismatic schema</h1>
-                <div class="unbrokenline"></div>
-            </div>
-            <aside>
-                
-            </aside>
-        </section>
-
-
+-->
 
         <section>
             <div class="content">
