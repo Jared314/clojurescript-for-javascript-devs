@@ -767,9 +767,33 @@ example1.core.fn2(10); // => 11
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Integrating</div></div>
-                <h1>Protocols and Extend-Type</h1>
-                <pre><code class="clojure">
-                </code></pre>
+                <h1>Extending Javascript Objects</h1>
+                <div style="display:inline-block; vertical-align:top;">
+                <h4>Extend-Type</h4>
+                <pre><code class="clojure">(extend-type js/RegExp
+  IFn
+  (-invoke
+   ([this s] (re-matches this s))))
+
+(#"\d{3}-\d{4}" "555-5555")
+
+(filter #"\d{3}-\d{4}"
+        ["7875433" "555-5555" "asdf"])
+</code></pre></div>
+
+                <div style="display:inline-block; vertical-align:top;">
+                <h4>Extend-Protocol</h4>
+                <pre><code class="clojure">(extend-protocol IFn
+  js/RegExp
+  (-invoke ([this s]
+            (re-matches this s)))
+  js/Date
+  (-invoke ([this s] s)))
+
+(#"\d{2}" "stuff")
+((js/Date.) "stuff")
+</code></pre></div>
+
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -855,19 +879,6 @@ example1.core.fn2(10); // => 11
  :to #{"guy1@superemail.com"
        #myns/Employee {:id 233}}}
 </code></pre>
-                <div class="unbrokenline"></div>
-            </div>
-            <aside>
-                
-            </aside>
-        </section>
-
-
-
-       <section>
-            <div class="content">
-                <div class="byline"><div class="classy">Building Bigger</div></div>
-                <h1>Libraries</h1>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -1093,43 +1104,31 @@ example1.core.fn2(10); // => 11
                 <div class="unbrokenline"></div>
             </div>
             <aside>
+                If you look into the internals of the object* function, it takes those key value pairs and builds a hashmap. It then takes that hashmap and, using the name, stores it in a single atom. Now, in this case, that atom is only for object definitions. There is another for behaviors. And, a third for object instances. In total there are five atoms.
+
                 They added an object system back to functional language, because they wanted infinite runtime customization and Light Table is a large code base.
             </aside>
         </section>
 
 
 
-
-
-
-
-
-        <section>
-            <div class="content">
-                <div class="byline"><div class="classy">Building Bigger</div></div>
-                <h1>Frameworks</h1>
-                <div class="unbrokenline"></div>
-            </div>
-            <aside>
-                
-            </aside>
-        </section>
-
-
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Pedestal Applications (v0.2)</h1>
+                <img src="img/pedestal-parallel-processing-dataflow.png" />
+                <h4>Source: <a href="https://github.com/pedestal/app-tutorial/wiki/Parallel-Processing">Pedestal Tutorial</a></h4>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
-        <!-- Pedestal -->
-        <!-- Pedestal Applications -->
-        <!-- Event flow -->
-        <!-- Large models -->
-        <!-- Event without models -->                
+            The target of Pedestal is interactive applications that require continuous two-way communications.
+
+            Pedestal is split into two parts, Pedestal Services, for Clojure-based server-side services, and Pedestal Applications for ClojureScript-based the client-side applications.
+
+            The 
             </aside>
         </section>
+
 
 
         <section>
@@ -1142,6 +1141,7 @@ example1.core.fn2(10); // => 11
                 
             </aside>
         </section>
+
 
 
         <section>
@@ -1162,19 +1162,22 @@ example1.core.fn2(10); // => 11
         </section>
 
 
+
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Community Opinion</h1>
-                <h3>Frameworks are generally unnecessary, <br/>and too large for their own good.</h3>
+                <h4>Frameworks are too large for their own good.</h4>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
             Most Clojure and ClojureScript developers that I have encountered have prefered both building and using libraries over frameworks. And, I agree with them. When I first encountered Pedestal, I could not understand what it did or how I was suppose to use it. It was this large, almost unwieldy thing. Every feature that I found in it, could have be improved by spliting it out into a more generic library.
 
-            I think this is an artifact of the large effects a library can have in Clojure and ClojureScript. Message passing is just a library. Optional typing is just a library. Pattern matching is just a library too. In other languages, those items are language features. Frameworks just don't have the same benefit in Clojure and ClojureScript. Most of the frameworks I have followed, in the past, end up being split into libraries.
+            This maybe artifact of the large effects a library can have in Clojure and ClojureScript. Message passing is just a library. Optional typing is just a library. Pattern matching is just a library too. In other languages, those items are language features. Frameworks just don't have the same benefit in Clojure and ClojureScript. Most of the frameworks I have followed, in the past, end up being split into libraries.
             </aside>
         </section>
+
+
 
         <section>
             <div class="content">
@@ -1185,6 +1188,8 @@ example1.core.fn2(10); // => 11
                     <ul>
                     <li><a href="http://clojure.org/cheatsheet">Clojure Cheat Sheet</a></li>
                     <li><a href="http://stackoverflow.com/questions/tagged/clojurescript">StackOverflow</a></li>
+                    <li><a href="http://clojuredocs.org/">ClojureDocs</a></li>
+                    <li><a href="http://clojure-doc.org/">Clojure Doc</a></li>
                     <li>#clojure and #clojurescript IRC Channels</li>
                     <li><a href="https://groups.google.com/forum/#!forum/clojure">Clojure</a> and <a href="https://groups.google.com/forum/#!forum/clojurescript">ClojureScript</a> Google Groups</li>
                     </ul>
