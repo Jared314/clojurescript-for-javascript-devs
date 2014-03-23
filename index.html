@@ -806,8 +806,20 @@ example1.core.fn2(10); // => 11
             <div class="content">
                 <div class="byline"><div class="classy">Integrating</div></div>
                 <h1>Macro Expansion</h1>
-                <pre><code class="clojure">
-                </code></pre>
+                <h4>Extend-Protocol</h4>
+                <pre><code class="clojure">(defn- emit-extend-protocol [p specs]
+  (let [impls (parse-impls specs)]
+    `(do
+       ~@(map (fn [[t fs]]
+                `(extend-type ~t ~p ~@fs))
+              impls))))
+
+(defmacro extend-protocol 
+  "..."
+  {:added "1.2"}
+  [p &amp; specs]
+  (emit-extend-protocol p specs))
+</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
