@@ -243,22 +243,22 @@ map(fizzbuzz,
                 <h1>Single Atom Architecture</h1>
                 <pre><code class="clojure">(ns example1.core)
 
-(def state (atom {:selected false}))
+(def state (atom {:color "#ffffff"}))
 
-(defn toggle [event]
-  (swap! state update-in [:selected] not))
+(defn gen-color []
+  (let [color (.toString (Math/floor (* (Math/random) 16777216)) 16)]
+    (str (.slice "#000000" 0 (- (count color))) color)))
 
-(defn updatebg []
-  (let [color (.toString (Math/floor (* (Math/random) 16777216)) 16)
-        colorstr (str (.slice "#000000" 0 (- (count color))) color)]
-    (set! (.. js/document -body -style -backgroundColor) colorstr)))
+(defn handle-click [event]
+  (swap! state assoc-in [:color] (gen-color)))
+
+(defn handle-state-change [newcolor]
+  (set! (.. js/document -body -style -backgroundColor) newcolor))
 
 (add-watch state :watch-change1
-  (fn [key a oldv newv] 
-    (when-not (= (:selected oldv) (:selected newv))
-      (updatebg))))
+  (fn [_ _ _ newv] (handle-state-change (:color newv))))
 
-(.addEventListener js/document "click" toggle)
+(.addEventListener js/document "click" handleclick)
 </code></pre>
                 <div class="unbrokenline"></div>
             </div>
@@ -277,9 +277,7 @@ map(fizzbuzz,
                 <h4>client.cljs (Using Socket.IO)</h4>
                 <pre><code class="clojure">(ns client)
 
-(def socket (.connect 
-              js/io 
-              "http://localhost"))
+(def socket (.connect js/io "http://localhost"))
 
 (defn on-click [event]
   (when-let [id (.getAttribute (.-target event) "data-id")]
@@ -299,15 +297,28 @@ map(fizzbuzz,
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Starting</div></div>
-                <h1>Common Javascript Libraries</h1>
-                <h4>Google Closure Library</h4>
-                <pre><code class="clojure">
-                    
-                </code></pre>
+                <h1>Using Javascript Libraries</h1>
+                <h4><a href="http://handlebarsjs.com/">Handlebars.js</a></h4>
+                <pre><code class="clojure">(def t (->> (.. js/document (getElementById "entry-template") -textContent)
+            (.compile js/Handlebars)))
+(set! (.. js/document (getElementById "target") -innerHTML)
+      (t #js {:title "Title1" :body "First post!"}))
+</code></pre>
+                <h4><a href="http://mtrpcic.github.io/pathjs/">Path.js</a></h4>
+                <pre><code class="clojure">(defn handleUserRoute [] ...)
+(defn setPageBackground [] ...)
+(.. js/Path (map "#/users") (to handleUserRoute) (enter setPageBackground))
+</code></pre>
+                <h4><a href="https://developers.google.com/closure/library/">Google Closure Library</a></h4>
+                <pre><code class="clojure">(ns example1.core
+  (:require [goog.dom :as dom]))
+
+(dom/createDom "div" #js {:style "background-color:#EEE;"} "text content")
+</code></pre>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
-                
+                The Google Closure Library has an advantage over using other external Javascript libraries, because it is built in to ClojureScript. The ClojureScript core library is built on top of the Google Closure Library.
             </aside>
         </section>
         

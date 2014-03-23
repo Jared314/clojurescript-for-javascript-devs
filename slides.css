@@ -233,7 +233,7 @@ section .strikethrough {
 }
 
 section .byline, section .row {
-  margin: 20px 0;
+  margin: 15px 0;
   display: -webkit-box;
   display: box;
   -webkit-box-align: center;
