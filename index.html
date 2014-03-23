@@ -879,16 +879,25 @@ example1.core.fn2(10); // => 11
             </aside>
         </section>
 
-        <!-- Reagent -->
-        <!-- Om -->
-        <!-- Quiescent -->
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
-                <h1>React.js</h1>
-Om
-Reagent
-Quiescent
+                <h1><a href="http://facebook.github.io/react/">React.js</a></h1>
+                <h4><a href="https://github.com/swannodette/om">Om</a>, <a href="https://github.com/holmsand/reagent">Reagent</a>, &amp; <a href="https://github.com/levand/quiescent">Quiescent</a></h4>
+
+<pre style="display: inline-block;"><code class="clojure">(ns example1
+  (:require [om.core :as om :include-macros true]
+            [om.dom :as dom :include-macros true]))
+
+(defn widget [data owner]
+  (reify
+    om/IRender
+    (render [this]
+      (dom/h1 nil (:text data)))))
+
+(om/root widget {:text "Hello world!"}
+  {:target (. js/document (getElementById "my-app"))})
+</code></pre></div>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
