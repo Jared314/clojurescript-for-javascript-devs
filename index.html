@@ -686,14 +686,30 @@ SuperMath.calculate();
             <div class="content">
                 <div class="byline"><div class="classy">Integrating</div></div>
                 <h1>^:export metadata</h1>
+                <div style="display:inline-block; vertical-align:top;">
+                <h4>ClojureScript</h4>
                 <pre><code class="clojure">(ns example1.core)
-(defn ^:export fun1 [x] (inc x))
-</code></pre>
-                <pre><code class="javascript">// :optimization :none
-// goog.require("example1.core");
 
-example1.core.fun1(10); // => 11
-</code></pre>
+(defn fn1 [x]
+  (inc x))
+
+(defn ^:export fn2 [x]
+  (inc x))
+
+
+</code></pre></div>
+                <div style="display:inline-block; vertical-align:top;">
+                <h4>Javascript</h4>
+                <pre><code class="javascript">// :optimization :none, :whitespace, or :simple
+example1.core.fn1(10); // => 11
+example1.core.fn2(10); // => 11
+
+// :optimization :advanced
+example1.core.fn1(10); // TypeError: 
+                       //   Object #&lt;Object>
+                       //   has no method 'fn1'
+example1.core.fn2(10); // => 11
+</code></pre></div>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
