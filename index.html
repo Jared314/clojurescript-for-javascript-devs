@@ -805,21 +805,26 @@ example1.core.fn2(10); // => 11
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Integrating</div></div>
-                <h1>Macro Expansion</h1>
-                <h4>Extend-Protocol</h4>
-                <pre><code class="clojure">(defn- emit-extend-protocol [p specs]
-  (let [impls (parse-impls specs)]
-    `(do
-       ~@(map (fn [[t fs]]
-                `(extend-type ~t ~p ~@fs))
-              impls))))
-
-(defmacro extend-protocol 
-  "..."
-  {:added "1.2"}
-  [p &amp; specs]
-  (emit-extend-protocol p specs))
+                <h1>Macros</h1>
+<pre><code class="clojure">(defmacro string? [x]
+  (bool-expr
+    (core/list 'js* "typeof ~{} === 'string'" x)))
 </code></pre>
+
+                
+                <div>
+                    <h4>Different Namespaces</h4>
+                    <img style="display:inline-block; vertical-align:top; box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.75); margin-top:10px;" src="img/macros-diffname.png"/>
+                    <pre style="display:inline-block; vertical-align:top;"><code class="clojure" style="height: 112px;">(ns example1.core
+  (:require [dommy.core :as d])
+  (:require-macros [dommy.macros :as m]))
+</code></pre></div>
+                <div>
+                    <h4>Same Namespace</h4>
+                    <img style="display:inline-block; vertical-align:top; box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.75); margin-top:10px;" src="img/macros-samename.png"/>
+                    <pre style="display:inline-block; vertical-align:top;"><code class="clojure" style="height: 94px;">(ns example1.core
+  (:require [om.core :as o :include-macros true]))
+</code></pre></div>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
@@ -1202,6 +1207,7 @@ example1.core.fn2(10); // => 11
                     <li><a href="http://stackoverflow.com/questions/tagged/clojurescript">StackOverflow</a></li>
                     <li><a href="http://clojuredocs.org/">ClojureDocs</a></li>
                     <li><a href="http://clojure-doc.org/">Clojure Doc</a></li>
+                    <li><a href="https://github.com/clojure/clojurescript/wiki/Differences-from-Clojure">Differences from Clojure</a></li>
                     <li>#clojure and #clojurescript IRC Channels</li>
                     <li><a href="https://groups.google.com/forum/#!forum/clojure">Clojure</a> and <a href="https://groups.google.com/forum/#!forum/clojurescript">ClojureScript</a> Google Groups</li>
                     </ul>
