@@ -721,7 +721,41 @@ example1.core.fn2(10); // => 11
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Integrating</div></div>
-                <h1>Node and Node Modules</h1>
+                <h1>NodeJS</h1>
+                <div style="display:inline-block; vertical-align:top;">
+                <h4>project.clj</h4>
+                <pre><code class="clojure">(defproject example1 "0.1.0-SNAPSHOT"
+  ...
+  :cljsbuild {
+    :builds [{
+      :source-paths ["src"]
+      :compiler {:target :nodejs
+                 :output-to "main.js"
+                 :output-dir "out"
+                 :optimizations :simple
+                 :source-map "main.js.map"}}]})</code></pre>
+                <h4>:target :nodejs</h4></div>
+
+                <div style="display:inline-block; vertical-align:top;">
+                <h4>server.cljs</h4>
+                <pre><code class="clojure">(ns example1.core
+  (:require [cljs.nodejs :as node]))
+
+(def http (node/require "http"))
+
+(def env (.env node/process))
+
+(defn -main [&amp; args]
+  (println "hello world"))
+ 
+(set! *main-cli-fn* -main)
+</code></pre>
+                <h4>module1.cljs</h4>
+                <pre><code class="clojure">(ns module1.core)
+
+(aset js/exports "core" module1.core)
+</code></pre>
+                </div>
                 <div class="unbrokenline"></div>
             </div>
             <aside>
