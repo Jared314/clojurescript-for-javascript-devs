@@ -258,7 +258,7 @@ map(fizzbuzz,
 (add-watch state :watch-change1
   (fn [_ _ _ newv] (handle-state-change (:color newv))))
 
-(.addEventListener js/document "click" handleclick)
+(.addEventListener js/document "click" handle-click)
 </code></pre>
                 <div class="unbrokenline"></div>
             </div>
