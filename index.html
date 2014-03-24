@@ -1262,31 +1262,19 @@ example1.core.fn2(10); // => 11
                 </div>
             </div>
             <aside>
-            Again, I am Jared. And, I can take questions.
+            Again, I am Jared. And, I can potentially take questions.
             </aside>
         </section>        
 
     </article>
     
     <script src="bespoke.min.js"></script>
-    <script src="bespoke-keys.min.js"></script>
-    <script src="bespoke-run.min.js"></script>
-    <script src="bespoke-hash.min.js"></script>
     <script src="highlight.pack.js"></script>
     <script>
         var deck1 = bespoke.from('article', {
             keys: true,
             run: true,
-            hash: true//,
-            // secondary: {
-            // // Change the selector used to find notes, in a .bespoke-slide context
-            // notes: ".show-notes",
-            // keys: {
-            //     // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent#Virtual_key_codes
-            //     // Change the key used to toggle the secondary window
-            //     toggle: 0x54, // (84) "T" key.
-            // }
-            //}
+            hash: true
         });
         hljs.initHighlightingOnLoad();
     </script>
