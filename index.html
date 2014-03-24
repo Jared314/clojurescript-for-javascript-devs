@@ -399,7 +399,7 @@ map(fizzbuzz,
      (cljs.analyzer/analyze user-env)
      (#(with-out-str (cljs.compiler/emit %)))
      (cljs.closure/optimize {:optimizations :simple}))</code></pre>
-                <h4>Commandline Tools</h4>
+                <h4>Command Line Tools</h4>
                 <pre><code class="bash">CLOJURESCRIPT_HOME="/Users/user1/cljs_src"
 $ cljsc test.cljs > out.js
 $ cljsc src {:optimiztions :advanced} > out.js</code></pre>
@@ -581,11 +581,22 @@ https://github.com/slagyr/speclj/
             <div class="content">
                 <div class="byline"><div class="classy">Building</div></div>
                 <h1>REPL</h1>
+                <h4>ClojureScript Command Line REPL</h4>
+                <pre><code class="bash">$ lein trampoline cljsbuild repl-rhino</code></pre>
+
+                <h4>ClojureScript Browser REPL (bREPL)</h4>
+                <pre><code class="clojure">(ns example1.core
+  (:require [clojure.browser.repl :as repl]))
+
+(repl/connect "http://localhost:9000/repl")
+</code></pre>
+                <pre><code class="bash">$ lein trampoline cljsbuild repl-listen</code></pre>
+                <!--<h4>Austin (nREPL)</h4>-->
 
                 <div class="unbrokenline"></div>
             </div>
             <aside>
-                Because of ClojureScript's compiled nature, a full REPL is only achievable through a bridge between the browser and a JVM instance running the compiler in the background. The three major approaches are the included commandline REPL, the integrated bREPL, and a project called Austin.
+                Because of ClojureScript's compiled nature, a full REPL is only achievable through a bridge between the browser and a JVM instance running the compiler in the background. The three major approaches are the included command-line REPL, the integrated bREPL, and a project called Austin.
             </aside>
         </section>
 
