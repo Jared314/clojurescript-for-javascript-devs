@@ -167,6 +167,7 @@ Lazy
             </aside>
         </section>
 
+<!-- Cut for time
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Infinite Lazy FizzBuzz</div></div>
@@ -220,7 +221,7 @@ map(fizzbuzz,
             I also did an example replicating the features in ES6. In this case, I had to defined my own generaters to to replicate the lazy sequences. But, the structure of the logic is not that different from Javascript written in a functional style.
             </aside>
         </section>
-
+-->
 
 
         <section>
@@ -971,40 +972,6 @@ example1.core.fn2(10); // => 11
         </section>
 
 
-        
-        <section>
-            <div class="content">
-                <div class="byline"><div class="classy">Building Bigger</div></div>
-                <h1>Core.Async</h1>
-                <div style="display: inline-block;">
-                <h4>Alice</h4>
-                <pre><code class="clojure">(defn alice [c]
-  (go (while true
-        (&lt;! c)
-        (&gt;! c "Hello"))))</code></pre></div>
-                <div style="display: inline-block;">
-                <h4>Bob</h4>
-                <pre><code class="clojure">(defn bob [c]
-  (go (while true
-        (&lt;! c)
-        (&gt;! c "Hello"))))</code></pre></div>
-                <h4>Start the Conversation</h4>
-                <pre><code class="clojure">(let [c (chan)]
-  (alice c)
-  (bob c)
-  (go (&gt;! c "Hello")))
-</code></pre>
-                <div class="unbrokenline"></div>
-            </div>
-            <aside>
-            If you've seen Go Routines in Google's Go language, this will look familier. Core.Async provides a message &amp; channel model for concurrent processes. You implement your logic inside a Go macro. At the points where it writes to, or listen's from, a channel, the execution of the go block will be suspended. Internally this is accomplished by recompiling your code into a state machine at macro expansion, similar the async and await keywords in C#.
-
-            I've written test code with hundreds of concurrently executing Go blocks with good performance. And, i've seen examples with thousands of Go blocks with good performance. (Although, the DOM manipulations did spin up my CPU fan.)
-
-            This also addresses the callback hell problem without promises or callbacks. Within a go block, your application logic can be written in a normal flow, and yet still be dealing with asynchronous events.
-            </aside>
-        </section>
-
 
         <section>
             <div class="content">
@@ -1056,6 +1023,39 @@ example1.core.fn2(10); // => 11
             </aside>
         </section>
 
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Building Bigger</div></div>
+                <h1>Core.Async</h1>
+                <div style="display: inline-block;">
+                <h4>Alice</h4>
+                <pre><code class="clojure">(defn alice [c]
+  (go (while true
+        (&lt;! c)
+        (&gt;! c "Hello"))))</code></pre></div>
+                <div style="display: inline-block;">
+                <h4>Bob</h4>
+                <pre><code class="clojure">(defn bob [c]
+  (go (while true
+        (&lt;! c)
+        (&gt;! c "Hello"))))</code></pre></div>
+                <h4>Start the Conversation</h4>
+                <pre><code class="clojure">(let [c (chan)]
+  (alice c)
+  (bob c)
+  (go (&gt;! c "Hello")))
+</code></pre>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+            If you've seen Go Routines in Google's Go language, this will look familier. Core.Async provides a message &amp; channel model for concurrent processes. You implement your logic inside a Go macro. At the points where it writes to, or listen's from, a channel, the execution of the go block will be suspended. Internally this is accomplished by recompiling your code into a state machine at macro expansion, similar the async and await keywords in C#.
+
+            I've written test code with hundreds of concurrently executing Go blocks with good performance. And, i've seen examples with thousands of Go blocks with good performance. (Although, the DOM manipulations did spin up my CPU fan.)
+
+            This also addresses the callback hell problem without promises or callbacks. Within a go block, your application logic can be written in a normal flow, and yet still be dealing with asynchronous events.
+            </aside>
+        </section>
 
 <!-- Javascript developers might not be as concerned with types or schema validation.
         
