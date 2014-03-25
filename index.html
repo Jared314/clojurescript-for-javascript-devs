@@ -506,7 +506,7 @@ $ lein new pedestal-app example3</code></pre>
                 :optimizations :whitespace
                 :pretty-print true
                 :source-map "main.js.map"}}]
-    :test-commands {"my-test" ["phantomjs" :runner "main.js"]}})
+    :test-commands {"my-test" ["phantomjs" "resources/test/test.js"]}})
 </code></pre>
                 <pre><code class="bash">$ lein cljsbuild test
 $ lein cljsbuild test my-test
@@ -896,10 +896,10 @@ example1.core.fn2(10); // => 11
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
-                <h1>Extensible Data Notation (EDN)</h1>
+                <h1><a href="https://github.com/edn-format/edn">Extensible Data Notation (EDN)</a></h1>
                 <pre><code class="clojure">{:id 12345
  :subject "Something Interesting"
- :message ["Sup?" "Yo"]
+ "message" ["Sup?" "Yo"]
  
  :sent #inst "2014-04-12T23:20:50.52Z"
  :gid #uuid "f51d2fa6-7dec-11d0-a765-10a1c93e6bf6"
@@ -1323,6 +1323,7 @@ example1.core.fn2(10); // => 11
                     <li><a href="https://github.com/clojure/clojurescript/wiki/Differences-from-Clojure">Differences from Clojure</a></li>
                     <li>#clojure and #clojurescript IRC Channels</li>
                     <li><a href="https://groups.google.com/forum/#!forum/clojure">Clojure</a> and <a href="https://groups.google.com/forum/#!forum/clojurescript">ClojureScript</a> Google Groups</li>
+                    <li><a href="http://www.youtube.com/user/ClojureTV">Clojure Youtube Channel</a></li>
                     </ul>
                 </div>
                 <div style="display:inline-block; vertical-align:top; font-size: 1.1em;">
