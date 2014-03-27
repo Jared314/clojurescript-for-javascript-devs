@@ -576,6 +576,33 @@ https://github.com/slagyr/speclj/
         </section>
 
 
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Building</div></div>
+                <h1><a href="https://github.com/cemerick/double-check">Double-Check</a></h1>
+                <pre><code class="clojure">[com.cemerick/double-check "0.5.7-SNAPSHOT"]</code></pre>
+                <h4>Example Tests</h4>
+                <pre><code class="clojure">(ns double-check.demos
+  (:require [cemerick.double-check.core :as sc]
+            [cemerick.double-check.generators :as gen]
+            [cemerick.double-check.properties :as prop]))
+
+(def sort-idempotent-prop
+  (prop/for-all [v (gen/vector gen/int)]
+    (= (sort v) (sort (sort v)))))
+
+(tc/quick-check 100 sort-idempotent-prop)
+;; => {:result true, :num-tests 100, :seed 1382488326530}
+</code></pre>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+
+https://github.com/cemerick/double-check
+
+            </aside>
+        </section>
+
 
         <section>
             <div class="content">
