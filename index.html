@@ -343,6 +343,17 @@ map(fizzbuzz,
             </aside>
         </section>
 
+<!-- Sumerize -->
+        <section>
+            <div class="content">
+                <div class="unbrokenline"></div>
+                <h1></h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
 
 
         <section>
@@ -690,12 +701,10 @@ https://github.com/cemerick/double-check
                 <h4>External Javascript</h4>
                 <pre><code class="javascript">var SuperMath = {
     a: 2,
-    calculate: function() {
-      return this.a + this.a;
-    }
+    calculate: function() { return this.a; }
 };
 
-SuperMath.calculate(); // => 4
+SuperMath.calculate(); // => 2
 </code></pre>
                 <div style="display:inline-block; vertical-align:top;">
                 <h4>ClojureScript</h4>
@@ -716,6 +725,7 @@ SuperMath.calculate();
                 <div class="unbrokenline"></div>
             </div>
             <aside>
+<!-- TODO: add this-as macro example for exposing "this" in clojurescript -->
                 There is an interesting mismatch between Javascript and ClojureScript. Javascript lacks a builtin namespace or module system. So, programmers, needing to organize larger codebases, have filled that gap by using objects as containers for their functionality. When you try to call those functions from ClojureScript, using the ClojureScript namespace syntax, it will set this to null.
             </aside>
         </section>
@@ -976,7 +986,7 @@ example1.core.fn2(10); // => 11
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
-                <h1><a href="http://facebook.github.io/react/">React.js</a></h1>
+                <h1><a href="http://facebook.github.io/react/">Facebook React</a></h1>
                 <h4><a href="https://github.com/swannodette/om">Om</a>, <a href="https://github.com/holmsand/reagent">Reagent</a>, &amp; <a href="https://github.com/levand/quiescent">Quiescent</a></h4>
 <pre style="display: inline-block;"><code class="clojure">(ns example1
   (:require [om.core :as om :include-macros true]
@@ -1119,18 +1129,6 @@ example1.core.fn2(10); // => 11
         </section>
 
 -->
-<!-- Cut for time
-        <section>
-            <div class="content">
-                <div class="byline"><div class="classy">Building Bigger</div></div>
-                <h1>Core.Async + Core.Match + Om</h1>
-                <div class="unbrokenline"></div>
-            </div>
-            <aside>
-                https://github.com/ptaoussanis/sente
-            </aside>
-        </section>
--->
 
         <section>
             <div class="content">
@@ -1144,7 +1142,7 @@ example1.core.fn2(10); // => 11
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
-                <h1><a href="https://github.com/LightTable/LightTable">Behavior Object System (Light Table)</a></h1>
+                <h1><a href="https://github.com/LightTable/LightTable">Behavior Object Tag System (Light Table)</a></h1>
                 
 <h4>Object</h4>
                 <pre><code class="clojure">(object* ::editor
@@ -1180,6 +1178,37 @@ example1.core.fn2(10); // => 11
         <section>
             <div class="content">
                 <div class="byline"><div class="classy">Building Bigger</div></div>
+                <h1>Propagating Values (Hoplon Client)</h1>
+                <h4>Data Model</h4>
+                <div>
+                <img src="img/hoplon-datamodel.svg" height="180px" />
+                </div>
+                
+                <h4>Hoplon Sexp Markup Syntax</h4>
+                <pre><code class="clojure">(page "index.html")
+
+(defc clicks 0)
+(defc= clicks2 (* clicks 2))
+
+(html
+  (head
+    (title "example page"))
+  (body
+    (p (text "Clicks: ~{clicks} (~{clicks2})"))
+    (button :on-click #(swap! clicks inc) "click me")))
+</code></pre>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+                
+            </aside>
+        </section>
+
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Building Bigger</div></div>
                 <h1>Message Passing (Pedestal Applications v0.2)</h1>
                 <img src="img/pedestal-parallel-processing-dataflow.png" />
                 <p style="margin-top:0;">Source: <a href="https://github.com/pedestal/app-tutorial/wiki/Parallel-Processing">Pedestal Tutorial</a></p>
@@ -1189,8 +1218,6 @@ example1.core.fn2(10); // => 11
             The target of Pedestal is interactive applications that require continuous two-way communications.
 
             Pedestal is split into two parts, Pedestal Services, for Clojure-based server-side services, and Pedestal Applications for ClojureScript-based the client-side applications.
-
-            The 
             </aside>
         </section>
 
@@ -1275,36 +1302,6 @@ example1.core.fn2(10); // => 11
 
 
 
-        <section>
-            <div class="content">
-                <div class="byline"><div class="classy">Building Bigger</div></div>
-                <h1>Propagating Values (Hoplon Client)</h1>
-                <h4>Data Model</h4>
-                <div>
-                <img src="img/hoplon-datamodel.svg" height="180px" />
-                </div>
-                
-                <h4>Hoplon Sexp Markup Syntax</h4>
-                <pre><code class="clojure">(page "index.html")
-
-(defc clicks 0)
-(defc= clicks2 (* clicks 2))
-
-(html
-  (head
-    (title "example page"))
-  (body
-    (p (text "Clicks: ~{clicks} (~{clicks2})"))
-    (button :on-click #(swap! clicks inc) "click me")))
-</code></pre>
-                <div class="unbrokenline"></div>
-            </div>
-            <aside>
-                
-            </aside>
-        </section>
-
-
 
         <section>
             <div class="content">
@@ -1327,6 +1324,32 @@ example1.core.fn2(10); // => 11
             Many Clojure and ClojureScript developers prefer using libraries over frameworks. And, I agree with them. When I first encountered Pedestal, I could not understand what it did or how I was suppose to use it. It was this large, almost unwieldy thing. Every feature that I found in it, could have be improved by spliting it out into a more generic library.
 
             This maybe artifact of the large effects a library can have in Clojure and ClojureScript. Message passing is just a library. Optional typing is just a library. Pattern matching is just a library too. In other languages, those items are language features. Frameworks just don't have the same benefit in Clojure and ClojureScript. Most of the frameworks I have followed, in the past, end up being decomplected into smaller libraries.
+            </aside>
+        </section>
+
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Building Bigger</div></div>
+                <h1></h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+
+            </aside>
+        </section>
+
+
+
+        <section>
+            <div class="content">
+                <div class="byline"><div class="classy">Building Bigger</div></div>
+                <h1>Core.Async + Core.Match + Om</h1>
+                <div class="unbrokenline"></div>
+            </div>
+            <aside>
+
             </aside>
         </section>
 
